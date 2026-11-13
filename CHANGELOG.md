@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.3: tidy folders and researched publish file
+- New layout: `videos/<slug>/` holds the final `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch (stills, sheets, test renders) goes to `work/<slug>/`. `video-ideas/` and `out/` are gone; Preflight step 6 migrates old projects by moving files, never deleting.
+- New Phase 2b "Publish research" in `docs/new-video.md`: current YouTube rules, a competitor scan, keyword research, then title (3 options), description, hashtags, tags, category, upload questions, pinned comment, thumbnail frame and posting time, all with sources. New `templates/publish_template.md`.
+- Phase 6 now extracts `thumbnail.jpg` and finalises `publish.md`; Update mode keeps old renders in `versions/` and refreshes the publish research when the story changes.
+- README: new folder layout and an updated "Update an existing project" command that migrates the old folders.
+
 ## v3.2: no downloaded 3D models
 - Removed the Kenney `.glb` dependency. `templates/bridge/props.ts` builds lanterns, carts, market stalls, benches, windmill, canoe, flowers, grass and lilies in code; `loadKit()` in `world.ts` now returns them (no GLTFLoader, no `public/bridge/kenney/`). Trees, bushes, hedges and banners were already code-built.
 - README: new-PC setup no longer downloads assets; added an "Update an existing project" paste-in command.

@@ -3,6 +3,7 @@ node_modules/
 remotion-app/node_modules/
 remotion-app/out/
 out/
+work/
 backup/
 *.log
 # large generated media

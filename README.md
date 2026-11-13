@@ -49,7 +49,7 @@ Set up this folder for the toonfacts skill so that "new video" works. Do every s
 
 5. Install the skill: git clone https://github.com/alifmahmudashik/toonfacts .claude/skills/toonfacts . Confirm .claude/skills/toonfacts/SKILL.md exists directly inside that folder. Remove any old skills named cartoon-3d-short, shorts-studio-skill or new-video from .claude/skills and ~/.claude/skills, because toonfacts replaces them (tell me which you removed).
 
-6. Project files: copy .claude/skills/toonfacts/templates/scripts/ to ./scripts/ if missing. Create video-ideas/ and out/. Add out/, node_modules/ and video-ideas/*/voiceover.mp3 to .gitignore if the folder is a git repo.
+6. Project files: copy .claude/skills/toonfacts/templates/scripts/ to ./scripts/ if missing. Create videos/ and work/. Add work/, node_modules/ and *.mp4 to .gitignore if the folder is a git repo.
 
 7. Chrome path: open scripts/bridge-stills.mjs. It hardcodes browserExecutable as C:/Program Files/Google/Chrome/Application/chrome.exe. Find where Chrome really is on this PC (Windows, macOS or Linux) and change the path to match, keeping chromiumOptions { gl: "angle" }.
 
@@ -57,7 +57,7 @@ Set up this folder for the toonfacts skill so that "new video" works. Do every s
 
 9. 3D props: nothing to download. All props (trees, bushes, lanterns, stalls, carts, windmill, canoe, flowers) are built in code by the skill (templates/bridge/props.ts and build.ts). Do NOT create public/bridge/kenney/ and do not download any model packs. Just check that templates/bridge/props.ts exists.
 
-10. Sanity checks: run ffmpeg -version; python -c "import numpy, scipy, PIL"; npx remotion compositions src/index.ts; render one small test still with npx remotion still to out/_setup_test.png and show me that it opened without errors; then delete the test file.
+10. Sanity checks: run ffmpeg -version; python -c "import numpy, scipy, PIL"; npx remotion compositions src/index.ts; render one small test still with npx remotion still to work/_setup_test.png and show me that it opened without errors; then delete the test file.
 
 11. ElevenLabs: check that an ElevenLabs MCP connector with a speech tool (creative_generate_speech) is available in this session. If not, tell me to add it in Claude Code (/mcp) and restart. Do not generate any audio now.
 
@@ -89,13 +89,15 @@ Update my toonfacts setup to the latest version and make sure nothing breaks.
 4. Copy any new or changed files from .claude/skills/toonfacts/templates/scripts/ into ./scripts/, but keep my Chrome path in scripts/bridge-stills.mjs.
 5. Make sure the packages from the Requirements section are installed (npm ls, pip), and that the ElevenLabs MCP is connected.
 6. Voice: the narrator is now expressive (Jack, eleven_v4, audio tags). Existing videos and their voiceover.mp3 files are untouched; only new videos use it.
-7. Run npx tsc --noEmit, render one test still, delete the test file, and report what changed and anything I must do myself.
+7. Folders: videos are now organised as videos/<slug>/ (final <slug>.mp4, thumbnail.jpg, publish.md, source/, versions/) with scratch in work/. If this project still has the old video-ideas/ and out/ folders, migrate them by MOVING files (never deleting) exactly as the Preflight step 6 in .claude/skills/toonfacts/SKILL.md says, leave my existing files in work/ and everything in src/, public/, scripts/, audio/ and backup/ alone, then show me the final tree of videos/ and work/ and list anything you could not match to a video.
+8. Publish files: new videos now get a researched publish.md (title options, description, hashtags, tags, category, pinned comment). For my existing videos, offer to create one with the same research steps (docs/new-video.md Phase 2b), but do it only after I say yes.
+9. Run npx tsc --noEmit, render one test still into work/, delete the test file, and report what changed and anything I must do myself.
 ```
 
 Then restart Claude Code once.
 
 ## Moving to another PC later
-Your work is the `video-ideas/` folder (scripts, voiceovers, notes). Copy it, then run the one-paste setup above. Everything else is reinstalled.
+Your work is the `videos/` folder (final videos, scripts, voiceovers, publish files). Copy it, then run the one-paste setup above. Everything else is reinstalled.
 
 ## Troubleshooting
 - Skill not found: `SKILL.md` is not directly in `.claude/skills/toonfacts/`. Restart Claude Code.
@@ -106,11 +108,17 @@ Your work is the `video-ideas/` folder (scripts, voiceovers, notes). Copy it, th
 
 ## What it creates
 ```
-video-ideas/
-  _ideas.md
-  <slug>/  script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  CHANGES.md  publish.md
-out/<slug>.mp4
+videos/
+  _ideas.md                   every topic used or rejected
+  <slug>/
+    <slug>.mp4                the final video: upload this
+    thumbnail.jpg             cover frame
+    publish.md                title, description, hashtags, tags, category, pinned comment, research sources
+    source/                   script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  CHANGES.md
+    versions/                 earlier renders (<slug>_v1.mp4 ...)
+work/                         scratch (stills, contact sheets, test renders): safe to delete
 ```
+Every new video gets its own folder with only what you need at the top. The publish file comes from fresh research (YouTube's own rules, similar successful Shorts, real search phrases), with links, not from guesses.
 
 ## What is inside
 `SKILL.md` (modes and rules), `docs/` (new, update, review, engine), `references/`, `templates/` (renderer source, audio, scripts, shot plan), `tools/review_video.sh`. See `CHANGELOG.md`.
