@@ -54,7 +54,7 @@ User rules that apply:
 5. **World.**
    - `lights.ts`: LIGHTS plus the LOOK sky/river/cloud palette per light.
    - `shade.ts`: two-tone shading and `untone()`.
-   - `build.ts`: town, houses and Kenney CC0 kit props, recoloured, with sight-line culling of anything blocking a camera.
+   - `build.ts` and `props.ts`: town, houses and all props (trees, bushes, lanterns, stalls, carts, windmill, canoe, flowers) built in code with no downloaded models, with sight-line culling of anything blocking a camera. Need a new prop for a topic? Add a builder function to `props.ts` and place it with `prop(...)`.
    - `paint.ts`: HD Canvas2D painted textures with seams painted in as dark tints.
    - `world.ts`: sky shader, fog = horizon colour, river, per-frame posing, sun frozen per shot and camera-relative.
 6. **Characters.**
@@ -289,7 +289,7 @@ lighting 5-6, ink 6, textures 5-6, characters 7, depth 6-7, composition 6-7 (fro
 5. Contracts between owners live in exported constants (e.g. `NOINK` layer from ink.ts, `dofAt`/`FOREGROUND` from story.ts, `LIGHTS`/`LOOK` from lights.ts). Changing a contract means telling every owner that reads it.
 
 ## Gotchas
-- Kenney nature-kit materials are teal: recolour them by material name in build.ts.
+- Props are code-built from chunky rounded shapes in flat storybook colours (`props.ts`); keep new ones in that style and check the silhouette from the lens.
 - Cameras end up inside houses: the sight-line culler in build.ts/world.ts removes anything blocking any camera ray.
 - Ink in the same merged effect pass as DOF gets overwritten. Ink must be its own pass before the blur.
 - Pixel-sized post parameters must scale with resolution: stills are at 0.5, the final at 1.333. R3F clamps dpr to ≥ 1, so `--scale 0.5` stills still render a 1080x1920 buffer.

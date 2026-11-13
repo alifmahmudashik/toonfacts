@@ -55,7 +55,7 @@ Set up this folder for the toonfacts skill so that "new video" works. Do every s
 
 8. Temp folder: Remotion bundles are about 1.3 GB each and never auto-deleted. Pick a drive with 5 GB or more free, create a REMOTION_TMP folder there, set the REMOTION_TMP environment variable permanently (setx on Windows, shell profile on macOS/Linux) and for this session, and tell me the path.
 
-9. 3D asset kit: the renderer loads Kenney CC0 .glb models from public/bridge/kenney/<name>.glb (names listed in KENNEY in .claude/skills/toonfacts/templates/bridge/world.ts: trees, bushes, flowers, grass, lantern, cart, stalls, banners, windmill, canoe and similar). They are not in the skill repo. Create public/bridge/kenney/. If I have an older project with that folder, ask me for its path and copy it. Otherwise download the free Kenney packs (kenney.nl, CC0, for example Nature Kit and Fantasy Town Kit), copy the needed .glb files there under those exact names, and list any name you could not find. Missing files do not crash the render (they are skipped), but scenes will have fewer props.
+9. 3D props: nothing to download. All props (trees, bushes, lanterns, stalls, carts, windmill, canoe, flowers) are built in code by the skill (templates/bridge/props.ts and build.ts). Do NOT create public/bridge/kenney/ and do not download any model packs. Just check that templates/bridge/props.ts exists.
 
 10. Sanity checks: run ffmpeg -version; python -c "import numpy, scipy, PIL"; npx remotion compositions src/index.ts; render one small test still with npx remotion still to out/_setup_test.png and show me that it opened without errors; then delete the test file.
 
@@ -77,11 +77,29 @@ git clone https://github.com/alifmahmudashik/toonfacts .claude/skills/toonfacts
 
 `SKILL.md` must sit directly inside `.claude/skills/toonfacts/`. Then say `new video`. The skill updates itself from the repo each run (`git pull`). Setting it up for every project: clone into `~/.claude/skills/toonfacts` instead. If you used the older `cartoon-3d-short` and `new-video` skills, remove them: this skill replaces both.
 
+## Update an existing project (new skill version)
+Already set up? Open Claude Code in that project folder and paste:
+
+```text
+Update my toonfacts setup to the latest version and make sure nothing breaks.
+
+1. cd into .claude/skills/toonfacts and run git pull (if the folder is not a git clone, delete it and clone https://github.com/alifmahmudashik/toonfacts again into .claude/skills/toonfacts). Confirm SKILL.md sits directly inside it and read CHANGELOG.md to see what changed.
+2. Remove old skills named cartoon-3d-short, shorts-studio-skill and new-video from .claude/skills and ~/.claude/skills (tell me which you removed).
+3. Props are now built in code, with no downloaded models. If my project has its own copy of the bridge renderer (src/videos/bridge/ or similar), copy the new templates/bridge/props.ts into it and update its world.ts so loadKit() returns makeKit() from ./props (no GLTFLoader, no staticFile, no public/bridge/kenney files). If the project does not use the bridge template, skip this and tell me.
+4. Copy any new or changed files from .claude/skills/toonfacts/templates/scripts/ into ./scripts/, but keep my Chrome path in scripts/bridge-stills.mjs.
+5. Make sure the packages from the Requirements section are installed (npm ls, pip), and that the ElevenLabs MCP is connected.
+6. Voice: the narrator is now expressive (Jack, eleven_v4, audio tags). Existing videos and their voiceover.mp3 files are untouched; only new videos use it.
+7. Run npx tsc --noEmit, render one test still, delete the test file, and report what changed and anything I must do myself.
+```
+
+Then restart Claude Code once.
+
 ## Moving to another PC later
-Your work is the `video-ideas/` folder (scripts, voiceovers, notes) and `public/bridge/kenney/`. Copy those, then run the one-paste setup above. Everything else is reinstalled.
+Your work is the `video-ideas/` folder (scripts, voiceovers, notes). Copy it, then run the one-paste setup above. Everything else is reinstalled.
 
 ## Troubleshooting
 - Skill not found: `SKILL.md` is not directly in `.claude/skills/toonfacts/`. Restart Claude Code.
+- Scenes look bare: the props are built in code, so there is nothing to download. Ask for more set dressing (see the set-dressing rule in the skill).
 - Render shows a blank or black frame: wrong Chrome path in `scripts/bridge-stills.mjs`, or Chrome missing.
 - Disk fills up: delete old folders in your `REMOTION_TMP` path.
 - No voiceover: the ElevenLabs MCP is not connected (`/mcp`). The skill will then give you the audio URL and ask you to save the file as `voiceover.mp3`, then say `continue video <slug>`.

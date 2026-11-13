@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2: no downloaded 3D models
+- Removed the Kenney `.glb` dependency. `templates/bridge/props.ts` builds lanterns, carts, market stalls, benches, windmill, canoe, flowers, grass and lilies in code; `loadKit()` in `world.ts` now returns them (no GLTFLoader, no `public/bridge/kenney/`). Trees, bushes, hedges and banners were already code-built.
+- README: new-PC setup no longer downloads assets; added an "Update an existing project" paste-in command.
+
 ## v3.1: expressive narrator
 - Voiceover is no longer deadpan. Default voice is now Jack - Social Media Creator (`EgaoTKAPI20lafqnhSqN`); the script is written with ElevenLabs `eleven_v4` audio tags (`[excited]`, `[curious]`, `[sarcastic]`, `[gasps]`, `[sighs]`, short pauses) and one capitalised punch word per beat.
 - At most ONE laugh tag per video, never `[laughs harder]`; amusement comes from tone.
