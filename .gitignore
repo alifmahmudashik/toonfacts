@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+remotion-app/node_modules/
+remotion-app/out/
+out/
+backup/
+*.log
+# large generated media
+*.mp4
+*.wav
+*.mov
+remotion-app/public/
+# secrets and local files
+.env
+.env.*
+.DS_Store
+Thumbs.db
+# temp folders used for renders
+remotion-tmp/
