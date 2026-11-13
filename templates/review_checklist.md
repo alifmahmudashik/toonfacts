@@ -1,6 +1,7 @@
 # Review checklist (score each out of 10; fix anything below 8)
 
 ## Script (before the voiceover)
+- The topic has a stated lane and evidence of heat (or an honest "none found"); it can be drawn as funny pictures.
 - Hook names the weird action in the first sentence, no context needed.
 - Six beats present, in order; the clue is shown before the payoff.
 - 120-150 spoken words, 35-60 s; numbers spelled as spoken.

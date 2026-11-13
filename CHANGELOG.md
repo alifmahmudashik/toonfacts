@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.4: trend-researched ideas and five lanes
+- Phase 1 is now research first: it searches what is being watched, searched and talked about now, collects 15-20 ideas with evidence links, and scores them (new: heat, verifiable, drawable; timely or evergreen).
+- Five lanes (story, loophole, why-can't, weird modern, how-it-works) with lane rotation (never the same lane more than twice in a row) and steering words: "new video trending", "new video science", etc.
+- `videos/_ideas.md` now records lane, timely/evergreen, score and evidence. `NOTES.md` records why the topic was chosen. No invented popularity numbers.
+
 ## v3.3: tidy folders and researched publish file
 - New layout: `videos/<slug>/` holds the final `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch (stills, sheets, test renders) goes to `work/<slug>/`. `video-ideas/` and `out/` are gone; Preflight step 6 migrates old projects by moving files, never deleting.
 - New Phase 2b "Publish research" in `docs/new-video.md`: current YouTube rules, a competitor scan, keyword research, then title (3 options), description, hashtags, tags, category, upload questions, pinned comment, thumbnail frame and posting time, all with sources. New `templates/publish_template.md`.
