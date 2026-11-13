@@ -1,6 +1,6 @@
 ---
 name: toonfacts
-description: Make animated cartoon fact shorts in the Ricks Clips style (2D characters in a colourful 3D world, deadpan narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
+description: Make animated cartoon fact shorts in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
 ---
 
 # Toonfacts: animated cartoon fact shorts, one skill

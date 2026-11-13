@@ -15,7 +15,7 @@ The style reference is a channel studied privately (`references/`: STYLE_BIBLE.m
 User rules that apply:
 - Captions: ON by default for Shorts. One word at a time, centred, bold, dark outline, inside the safe area, timed to `words.json` (see 'Subtitles'). Only leave them off if the user says so. No other on-screen labels.
 - English only.
-- Voice: one steady tone (deadpan: the narrator never reacts, the characters do).
+- Voice: expressive and young, changing tone with the story through audio tags (see docs/new-video.md Phase 3); at most one laugh. The characters' faces stay deadpan.
 - Jokes are researched real facts.
 - Standard mix: music +3 dB, SFX -6 dB, voice unchanged.
 - Final export 2K vertical: 1440x2560, `--scale 1.3333`.
@@ -113,7 +113,7 @@ Six beats, every time:
 
 ## Make it funny (comedy engine)
 The crowd laughs at the hero; the viewer should laugh too.
-- **Deadpan voice, absurd pictures.** The narrator never reacts; the characters do. The gap between the two is the joke.
+- **Lively voice, absurd pictures.** The narrator sounds like a real person telling a wild story; the characters keep straight faces and react. The gap between the two is the joke.
 - **A gag every 4-6 s**, using at least three kinds per short: a line gag (understatement, "Luckily ... / Unluckily ..."), a visual gag (reaction face, a tiny detail in the background, a wrong-scale prop) and a sound gag (a silly SFX that lands on the reaction).
 - **Rule of three:** two normal beats, then the third breaks the pattern.
 - **Running gag:** one background character or object (a pigeon, a man with a sandwich) shows up 3-4 times and gets a payoff near the end.
@@ -207,7 +207,7 @@ Characters do not talk with moving lips and there is no second voice. The narrat
 - **Life between beats (secondary motion):** no character is frozen for more than about 0.5 s. Add blinks every 2-4 s, small head bobs and sways, breathing squash, an idle hand or foot shift, and prop wobbles (a bell, a hat brim, a hanging sign). Background characters get their own loops. Reaction faces still land on their beats; the idles sit under them.
 - **Timing:** the expression changes 0-3 frames before the word it reacts to, using a blink to hide the swap (as in `cast.ts`). The reaction holds 8-12 frames, then eases to the next expression. Never stay on one face for a whole line.
 - **Dialogue beat (optional, at most 2 per short, one line of 8 words or fewer each):**
-  1. The narrator reads the quoted line in the same deadpan voice: `"Is this legal?" the dealer asked. "Very," said the con man.` Captions use the same style.
+  1. The narrator reads the quoted line in the same voice: `"Is this legal?" the dealer asked. "Very," said the con man.` Captions use the same style.
   2. The speaker is a flow stop: settle on them while the line is read (20+ frames, creeping push-in).
   3. A silent beat of 6-10 frames with a creep, no new sound.
   4. The camera travels or rack-focuses to the listener (flow stop or `flowFocus`), and their face lands 3-6 frames after the last word.

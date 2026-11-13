@@ -2,7 +2,7 @@
 
 ## What the channel does
 - A true story told as a funny animated short, 40-70 s, vertical, simple characters in a rich 3D world.
-- A deadpan narrator over absurd pictures. The characters react, the narrator never does.
+- A lively, expressive narrator (excited, curious, sarcastic, amused, never laughing constantly) over absurd pictures. The characters keep deadpan faces and react to what happens.
 - Word-by-word captions, a new subject every 2-3 s, mostly reached by camera travel instead of cuts, a sound on almost every move, music under the voice.
 
 ## The six beats ("laugh at a genius")
@@ -29,7 +29,7 @@ Avoid: tragedies with real victims as the joke, living private people, medical, 
 - **Visual gags:** reaction faces, a wrong-scale prop, a tiny background detail, a running gag character (pigeon, man with a sandwich) that pays off at the end.
 - **Sound gags:** record scratch, crowd laugh, a tiny ding, a gulp.
 - **Rule of three:** two normal beats, the third breaks the pattern.
-- **Dialogue beat (optional, at most 2):** the narrator reads a quoted line of 8 words or fewer in the same deadpan voice, the speaker is a camera stop, a 6-10 frame pause, the camera glides or racks focus to the listener, whose face lands 3-6 frames after the last word.
+- **Dialogue beat (optional, at most 2):** the narrator reads a quoted line of 8 words or fewer in the same voice, slightly acted, the speaker is a camera stop, a 6-10 frame pause, the camera glides or racks focus to the listener, whose face lands 3-6 frames after the last word.
 
 ## Reaction faces to schedule
 laugh (+crowd laugh), shock (+gasp or scratch), nervous (+gulp), dazed (+ding), pained, smug (smile or grin), guilty (whistle), unimpressed (stern, held 12 frames).

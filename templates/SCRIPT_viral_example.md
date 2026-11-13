@@ -1,7 +1,7 @@
 # Example: viral + funny fact short (~35 s). Copy this layout to SCRIPT.md for a new story.
 
 Title: The Man Who Sold the Eiffel Tower. Twice.
-Format: 9:16, ~3.5 words/s, captions on, deadpan voice, a gag every 4-6 s.
+Format: 9:16, ~3.5 words/s, captions on, expressive voice with audio tags, at most one laugh, a gag every 4-6 s.
 
 ## Facts (with sources, check before recording)
 - 1925, Paris: con man Victor Lustig posed as a government official and offered the Eiffel Tower for scrap to metal dealers; André Poisson paid; Lustig fled; Poisson did not report it; Lustig tried again with new buyers and one of them went to the police; Lustig left for America.
