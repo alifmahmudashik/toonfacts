@@ -8,4 +8,4 @@ Combines `cartoon-3d-short` (v2.1, the renderer and look rules) and `new-video` 
 - Voiceover: downloads the ElevenLabs audio automatically when possible, otherwise opens the link and writes `NEEDS_AUDIO.md`.
 - Keeps everything from cartoon-3d-short v2.x: captions, viral story format, funny rules, framing limits, lighting, continuous camera flow, reactions and dialogue beats, set dressing and real 3D depth, the six rules for every video, the quality gate.
 
-History before v3 lives in the two original repos (shorts-studio-skill, new-video-skill). Based on mromidev/claude-animated-shorts (MIT).
+History before v3: the full README, CHANGELOG and original wording of both earlier repos (shorts-studio-skill, new-video-skill) are archived in `docs/history/`. Based on mromidev/claude-animated-shorts (MIT).

@@ -54,4 +54,5 @@ out/
 | `references/story_format.md` | The six-beat story format, comedy toolbox, pacing numbers |
 | `references/` (other) | Style bible, measured reports, reference frames and sheets |
 | `templates/` | Renderer source (`bridge/`), audio synthesis, scripts, shot plan, script and review templates |
+| `docs/history/` | Archive of the two earlier repos' README, CHANGELOG and original wording. Not instructions |
 | `tools/review_video.sh` | Length, hard-cut and loudness checks plus contact sheets |

@@ -1,6 +1,6 @@
 # Mode: new video
 
-Full pipeline from idea to rendered MP4. Preflight (see `SKILL.md`) has already run. Rules that apply everywhere are in `SKILL.md` (no questions, one voice take, no keys, never publish).
+Full pipeline from idea to rendered MP4. For **Continue**: read `video-ideas/<slug>/` and jump to the first missing phase (voiceover, words.json, build, review, render). Preflight (see `SKILL.md`) has already run. Rules that apply everywhere are in `SKILL.md` (no questions, one voice take, no keys, never publish).
 
 ## Phase 1: Idea (skip if the user gave a topic)
 Read `references/story_format.md` for what makes a Ricks-style short work. Then:

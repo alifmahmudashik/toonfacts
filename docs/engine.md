@@ -81,7 +81,7 @@ User rules that apply:
 11. **Deliver.** SendUserFile the final mp4, update memory, write notes.
 
 ## Preflight (do this first)
-- `templates/bridge/`, `references/` and `tools/` ship inside this skill folder, so they are already here. If any is missing the skill folder is damaged: reinstall it from its repo. Never improvise a generic three.js look without the templates.
+- `templates/bridge/`, `templates/scripts/` and `references/` ship inside this skill folder, so they are already here. The commands below that say `scripts/...` run from the project: copy `templates/scripts/` into the project's `scripts/` folder if it is not there yet. If any is missing the skill folder is damaged: reinstall it from its repo. Never improvise a generic three.js look without the templates.
 - Make a 15 s test clip first (hook + 2-3 shots, with captions and sound). Render stills, run the Quality gate, fix, then extend to the full story. Never go straight to a full render.
 
 ## Rules for every video (apply to ALL new shorts, whatever the topic)
