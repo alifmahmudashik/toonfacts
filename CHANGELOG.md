@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.6 - hook gate, and interesting facts are back
+- **The hook is now a gate.** `docs/new-video.md` Phase 2 step 3 will not let the script be written until a first line passes: draft 8 hooks across at least 4 of 6 named patterns, strike the ones that break a rewrite rule, score the survivors, then run a 3-second test on the winner judged cold with no title. A failing hook is redrafted, never carried forward because the rest of the script is good.
+- `references/story_format.md` has a full **hook section**: what a hook must be, 6 patterns with real examples, 7 rewrite triggers, and the 3-second test.
+- The hook is judged again at three later points: the cold read answers it first, `templates/review_checklist.md` opens with its own hook block (script line and the first 3 seconds of the render), and `docs/review.md` step 2 judges it before anything else.
+- **Two story shapes, so interesting-fact topics are allowed again.** Shape A is the character story (a want, an obstacle). Shape B is the question story, where the question is the protagonist and the viewer's wrong assumption is the obstacle: "turkeys are from America, so why the Asian name?". Phase 1 searches for both, scores "drive" per shape, and the six beats have a Shape B column.
+- Phase 1 no longer drops a fact topic for having no protagonist. It tries the Shape B conversion first, and only rejects a list with no question at the top. Topic types restored: names and words, object shapes, odd rules and borders, mechanisms behind everyday facts.
+- `templates/script_template.md` records the shape, the hook's pattern and its 3-second test result; `_ideas.md` lines now carry the shape.
+- Update mode gains a "weak hook" change class, and "apply the latest rules" re-runs the hook gate on the existing first line.
+
 ## v3.5: story first
 - Replaced the five lanes and trend-chasing with a story engine: one protagonist with a want and an obstacle, one open question, "but / therefore" beats, a reversal near 70 %, at most 4 names, a closing line that echoes the first. List-stories ("several facts about X") are rejected.
 - Phase 1 searches for true stories with a person or animal, a want and a reversal; popularity is only a tie-breaker. New scoring: protagonist, obstacle and reversal, surprise, stakes, drawable, debatable, verifiable, safe.

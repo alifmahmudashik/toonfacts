@@ -1,6 +1,6 @@
 ---
 name: toonfacts
-description: Make animated cartoon fact shorts (story-first: one character, a want, an obstacle, a twist) in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
+description: Make animated cartoon fact shorts (story-first, hook-gated: true stories, history and interesting facts, each built on one question opened in the first three seconds) in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
 ---
 
 # Toonfacts: animated cartoon fact shorts, one skill
@@ -14,11 +14,12 @@ Say what you want in plain words. This one skill does the whole job: idea, facts
 | "update video <slug>", "fix the video", "change X in <slug>", "apply the latest rules" | **Update** | `docs/update-video.md` |
 | "continue video <slug>" (after a manual step such as saving the audio) | **Continue** | `docs/new-video.md`, resume at the first missing phase |
 | "review video", "check <slug>", "check this mp4" | **Review** | `docs/review.md` only |
-| "video ideas", "give me ideas" | **Ideas** | `docs/new-video.md` Phase 1 only: research true stories, score them on story strength, log them in `videos/_ideas.md`, show the top 5 with a one-line story and a source, build nothing |
+| "video ideas", "give me ideas" | **Ideas** | `docs/new-video.md` Phase 1 only: research true stories and interesting facts, score them on story strength and hook strength, log them in `videos/_ideas.md`, show the top 5 with a one-line story, its shape and a draft hook, build nothing |
 | "update the skill" | **Upgrade** | Preflight step 2 only, then report the version change |
 If the request is unclear, choose New when no video is named and Update when one is. How the video is built and how it must look is in `docs/engine.md`; both New and Update use it.
 
 ## Operating rules (all modes)
+- **The hook is a gate, not a flourish.** No script is written until a first line passes the hook gate in `docs/new-video.md` Phase 2, and no video is delivered until the hook block at the top of `templates/review_checklist.md` passes. A weak first line is a reason to redraft, never something to patch around later.
 - **Do not ask questions.** Make reasonable choices, write them in the video's `NOTES.md`, keep going. Stop only when the voiceover cannot be created (see `docs/new-video.md` Phase 3), a needed tool is missing, or a decision cannot be undone.
 - **One folder per video, everything inside it:** `videos/<slug>/` (slug = title as lower-case words joined by hyphens). Final MP4 and `publish.md` at the top, working files in `source/`, old renders in `versions/`. Scratch (stills, contact sheets, test renders) goes only in `work/<slug>/`. Never leave work only in the conversation.
 - **Spend ElevenLabs credits once per voiceover** (one take). Regenerate only when the spoken words change or the audio is unusable.

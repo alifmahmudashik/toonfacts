@@ -4,7 +4,7 @@ Use for "update video <slug>", "fix the video", "change the ending of <slug>", "
 
 ## 1. Find the video and the request
 - `<slug>` is the folder name in `videos/`. If none is named, use the most recently changed folder that has a `<slug>.mp4`.
-- The request is plain words from the user, or "fix what REVIEW.md lists". If the request is only "update" or "apply the latest rules", the request is: bring the video up to the current rules in `docs/engine.md` ("Rules for every video") and fix everything `docs/review.md` finds.
+- The request is plain words from the user, or "fix what REVIEW.md lists". If the request is only "update" or "apply the latest rules", the request is: bring the video up to the current rules in `docs/engine.md` ("Rules for every video"), re-run the hook gate (`docs/new-video.md` Phase 2 step 3) against the current first line, and fix everything `docs/review.md` finds.
 - Read `videos/<slug>/source/script.md`, `NOTES.md`, `REVIEW.md` and `CHANGES.md` (if present) and `publish.md`, and the current render's contact sheets (`tools/review_video.sh`) so the starting point is known.
 
 ## 2. Classify the change (this decides what is redone)
@@ -12,6 +12,7 @@ Use for "update video <slug>", "fix the video", "change the ending of <slug>", "
 |---|---|
 | Looks only: sets, props, lighting, camera, captions, faces, ending beat, idle motion, framing | Project code only. No new audio. |
 | Words of the script (any spoken sentence) | Script, one new voice take, new `words.json`, re-time shots, then the affected shots |
+| Weak hook (the first line fails the review checklist's hook block) | Hook gate in `docs/new-video.md` Phase 2 step 3, then the opening line of the script, one new voice take, and shot 1 if the picture no longer matches the line |
 | New or removed scenes | Shot plan, `story.ts`, affected shots; new audio only if spoken words change |
 | Title, description, hashtags | `publish.md` only: redo the research steps of `docs/new-video.md` Phase 2b that the change affects |
 | Music or sound effects | Audio mix only |

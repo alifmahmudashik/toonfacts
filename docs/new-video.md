@@ -3,28 +3,48 @@
 Full pipeline from idea to rendered MP4. For **Continue**: read `videos/<slug>/` (and its `source/`) and jump to the first missing phase (voiceover, words.json, build, review, render). Preflight (see `SKILL.md`) has already run. Rules that apply everywhere are in `SKILL.md` (no questions, one voice take, no keys, never publish).
 
 ## Phase 1: Idea (skip if the user gave a topic)
-Goal: the topic with the best STORY, not the most trending one. Read `references/story_format.md` first (story engine, rules, what a weak list-story looks like).
+Goal: the topic with the best STORY, not the most trending one. Read `references/story_format.md` first (the two story shapes, the hook section, what a weak list-story looks like).
 
-1. **History.** Read `videos/_ideas.md` (date, slug, score per line). Never repeat a topic or its angle.
-2. **Find true stories** (WebSearch/WebFetch, at least 6 searches). Look for real events with a person or animal, a want, an obstacle and a reversal: cons, mistakes, rivalries, accidents, loopholes, naming mix-ups, "the one who was ignored and was right". Also check what people are actually watching and asking right now, but only as a tie-breaker. Collect 12-15 candidates, each with a one-line story, a source link and a note on where the best detail is.
-3. **Reject list-stories.** If the idea is "several facts about X" with no one wanting anything (a list of names, countries, records, dates), either find the human or animal conflict inside it or drop it.
-4. **Score 0-3** on: **protagonist** (one clear character with a want), **obstacle and reversal** (it gets worse, then turns), **surprise** (a true detail that sounds wrong), **stakes** (what is lost or won, even if small and funny), **drawable** (it can be shown as funny pictures with a cheap set), **debatable ending** (a comment starts), **verifiable** (two independent sources), **safe** (no real victims mocked, no hate, no living private people, no medical, legal or political claims). A candidate scoring 0 on protagonist, reversal or verifiable is out. Pick the top total (ties: the more visual one).
-5. If the user said "surprise me" or nothing, this choice is final: do not ask. Log all candidates in `videos/_ideas.md` as `date | slug | score | picked or rejected | one-line story | source`. In `source/NOTES.md` write one line on why this story won.
+1. **History.** Read `videos/_ideas.md` (date, slug, shape, score per line). Never repeat a topic or its angle.
+2. **Search wide, at least 6 searches, across both shapes.** The channel is animated true stories, history and interesting facts, so look for both:
+   - **Shape A, character stories:** cons, mistakes, rivalries, accidents, loopholes, stunts, "the one who was ignored and was right".
+   - **Shape B, question stories:** why a thing is called what it is called; why an object is shaped that way; why an odd rule, border, building or custom exists; an interesting fact with a real mechanism behind it.
+   Also check what people are actually watching and asking right now, but only as a tie-breaker. Collect 12-15 candidates, each with a one-line story, its shape (A or B), a source link, and a note on where the best detail is.
+3. **Reject list-topics, not fact topics.** "Several facts about X" with nothing at stake is out. But the same material is allowed the moment it becomes Shape B: one question at the top, the obvious answer knocked down, and a reveal that is stranger than the assumption. Try that conversion before dropping an idea.
+4. **Draft one hook per shortlisted candidate, before scoring.** One sentence, no context, under about 14 spoken words, following the hook rules in `references/story_format.md`. A topic whose hook needs a second sentence to make sense is not a topic yet. This hook is a test, not a commitment: Phase 2 writes the real one.
+5. **Score 0-3** on each of these. The first item depends on the shape:
+   - **Drive** - Shape A: one clear character with a want. Shape B: a question people half-wonder about, with a believable wrong answer to knock down.
+   - **Hook** - the draft hook opens a real question with no context, and could not open a hundred other videos.
+   - **Obstacle and reversal** - it gets worse, then turns, at about 70 %.
+   - **Surprise** - a true detail that sounds wrong.
+   - **Stakes** - what is lost or won, even if small and funny.
+   - **Drawable** - it can be shown as funny pictures with a cheap set.
+   - **Debatable ending** - a comment starts.
+   - **Verifiable** - two independent sources.
+   - **Safe** - no real victims mocked, no hate, no living private people, no medical, legal or political claims.
+   A candidate scoring 0 on **drive**, **hook**, **reversal** or **verifiable** is out. Pick the top total (ties: the more visual one).
+6. If the user said "surprise me" or nothing, this choice is final: do not ask. Log all candidates in `videos/_ideas.md` as `date | slug | shape | score | picked or rejected | one-line story | source`. In `source/NOTES.md` write one line on why this story won.
 
-**Ideas mode:** steps 1-4, then show the top 5 as a short list (title, the one-line story, why it wins, a source link). Build nothing.
+**Ideas mode:** steps 1-5, then show the top 5 as a short list (title, its shape, the one-line story, the draft hook, why it wins, a source link). Build nothing.
 
 ## Phase 2: Research and script
 1. **Research for the story, not just the facts.** Search at least 8 times and read the best sources in full (WebFetch). Find: who the real people or animals were and what each wanted; the exact order of events; the numbers, dates and places; the best true quote or detail; the funniest true moment; where sources disagree. Write a fact list with links under "Fact notes" in `source/script.md`. Mark disputes and keep the visuals generic there. Invented dialogue is flagged as a comic dramatisation, never presented as a quote.
-2. **Story spine (must pass before writing).** Fill in `templates/script_template.md`, section "Story spine":
-   - **Logline** in one sentence: `[Character] wants [goal], but [obstacle], so [action], until [twist].`
+2. **Story spine (must pass before writing).** Fill in `templates/script_template.md`, section "Story spine". First name the **shape** (A character story or B question story, see `references/story_format.md`), because it decides the logline and the beat names:
+   - **Logline** in one sentence. Shape A: `[Character] wants [goal], but [obstacle], so [action], until [twist].` Shape B: `Everyone assumes [wrong answer], but [fact that kills it], so [the search narrows], until [the real answer, which is stranger].`
    - **The question** the viewer needs answered, opened in the first 3 s and answered only at the end.
    - **Beats as "but / therefore"**: 6-9 beats, each linked to the previous one by BUT or THEREFORE, never "and then". Each beat must change something: the stakes rise, someone is proven wrong, or the answer gets worse. A beat that only adds a fact is cut.
    - **Names cap:** at most 4 named people, places or countries. Merge or drop the rest.
    - **The reversal** at about 70 % of the video, and the closing line that gives the opening line a new meaning.
    If any line is missing or the story is still a list, change the angle or the topic. Do not write the script yet.
-3. **Hooks.** Write 5 different first sentences (a weird action, a contradiction, a number, a question, a dare). Choose the one that creates the strongest question with no context. Keep the other 4 in `NOTES.md`.
+3. **Hook gate (the script is not written until this passes).** The first line decides whether the video is watched at all, so it gets its own pass. Read the hook section of `references/story_format.md` and work through it in order:
+   - **Draft 8 hooks**, spread across at least 4 of the 6 patterns there (contradiction, weird action, impossible number, named wrong assumption, direct dare, status flip). Eight, not five: the good one is rarely in the first three.
+   - **Strike out any that break a rewrite rule** in that section: needs a second sentence, announces a topic, could open any other video, spoils the payoff, carries two or more names, starts with "Did you know" or other throat-clearing, or puts its best word in the first half.
+   - **Score the survivors 0-3** on: question opened (how badly does a stranger need the answer), specific to this story, understandable cold, lands on its strongest word, speakable by an excited person in one breath. Pick the highest.
+   - **Run the 3-second test.** Judge the winner alone, with no title and no context, as if heard mid-scroll with the sound half on: can a stranger say what question this video will answer? If not, it fails and you draft again. Do not carry a failing hook forward on the grounds that the rest of the script is good.
+   - Write the winner, its pattern, its score and the 7 rejects into `source/NOTES.md`, and the winner into the script template's "Hook chosen" line.
+   - The hook is also the first thing the cold read in step 5 judges, the first line of the review checklist, and the seed for the title and the first description line in Phase 2b. If any of those three later says the hook is weak, come back here and redraft rather than patching around it.
 4. **Write the script** (120-150 spoken words, about 40-55 s with pauses) from the spine. A small question or surprise every 8-10 s; a gag every 4-6 s, at least three kinds; the clue is shown before the payoff; numbers and years written as spoken and shown as digits in captions. Expressive, fun narrator who reacts like a real person telling a story (the characters keep deadpan faces). At most 2 dialogue beats, each a quoted line of 8 words or fewer read by the narrator. The last line pays off the question and echoes the first line.
-5. **Cold read (fresh eyes).** Before any voice credits are spent, have the script judged by someone who has not seen the work: if the Agent tool is available, start a separate agent with only the script and `templates/review_checklist.md` (script section), asking it to act as a bored viewer scrolling Shorts and answer: would I swipe at 3 s? at 15 s? where did I get lost or bored? which line is the best, which is dead weight? what did I expect and not get? Otherwise do it yourself in a separate pass, reading only the script text. Rewrite what it flags. Up to 2 rounds; keep the verdict in `source/NOTES.md`.
+5. **Cold read (fresh eyes).** Before any voice credits are spent, have the script judged by someone who has not seen the work: if the Agent tool is available, start a separate agent with only the script and `templates/review_checklist.md` (script section), asking it to act as a bored viewer scrolling Shorts and answer, hook first: after the first sentence alone, what question do I think this video answers, and do I care? then, would I swipe at 3 s? at 15 s? where did I get lost or bored? which line is the best, which is dead weight? what did I expect and not get? Otherwise do it yourself in a separate pass, reading only the script text. Rewrite what it flags. Up to 2 rounds; keep the verdict in `source/NOTES.md`.
 6. **Shot plan.** Fill in `templates/SHOT_PLAN_template.md` for every shot: camera flow, three depth layers, props list and background characters, light preset, caption height, reactions and idle motion, and the ending beat. 12-16 places for 60 s, 7-10 for 40 s. Every important beat gets a picture that carries the joke without the words; no unreadable close-ups (a prop in frame must be recognisable) and no blank placeholder screens or maps.
 7. Self-check the script against `templates/review_checklist.md` (script section). Fix and continue. Do not wait for approval.
 

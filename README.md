@@ -1,6 +1,6 @@
 # toonfacts
 
-One Claude Code skill for animated cartoon fact shorts in the Ricks Clips style: simple 2D characters in a colourful 3D world, an expressive narrator, word-by-word captions, camera that flows between subjects. Rendered with three.js inside Remotion on your own PC, with an ElevenLabs voiceover.
+One Claude Code skill for animated cartoon fact shorts in the Ricks Clips style. Every video is built on one question opened in the first three seconds, and no script is written until its first line passes a hook gate. The look: simple 2D characters in a colourful 3D world, an expressive narrator, word-by-word captions, camera that flows between subjects. Rendered with three.js inside Remotion on your own PC, with an ElevenLabs voiceover.
 
 Based on [mromidev/claude-animated-shorts](https://github.com/mromidev/claude-animated-shorts) (MIT).
 
@@ -95,6 +95,8 @@ Update my toonfacts setup to the latest version and make sure nothing breaks.
 ```
 
 Then restart Claude Code once.
+
+Rule changes (like the hook gate in v3.6) apply to new videos straight away. To bring an existing video up to them, say `update video <slug> apply the latest rules`: it re-runs the hook gate on the current first line and only redoes what actually changed.
 
 ## Moving to another PC later
 Your work is the `videos/` folder (final videos, scripts, voiceovers, publish files). Copy it, then run the one-paste setup above. Everything else is reinstalled.

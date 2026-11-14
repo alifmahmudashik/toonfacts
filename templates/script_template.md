@@ -5,13 +5,17 @@ Voice: ElevenLabs "<voice name>" (model <model>).
 Audio file: `voiceover.mp3` in this folder (final take, about <N> s). Shot times below are approximate: re-time every shot to the real word timings in `words.json`.
 
 ## Story spine (fill in and pass before writing the script)
-- Logline: <Character> wants <goal>, but <obstacle>, so <action>, until <twist>.
+- Shape: <A character story | B question story>
+- Logline (A): <Character> wants <goal>, but <obstacle>, so <action>, until <twist>.
+- Logline (B): Everyone assumes <wrong answer>, but <fact that kills it>, so <the search narrows>, until <the real answer, which is stranger>.
 - The question (opened in the first 3 s, answered at the end): <question>
 - Beats, each linked by BUT or THEREFORE (6-9): 1. <beat> / BUT 2. <beat> / THEREFORE 3. <beat> ...
 - Names used (max 4): <list>
 - Reversal (about 70 %): <what changes and which earlier clue set it up>
 - Closing line (pays off the question, echoes the first line): <line>
-- Hook chosen (the other 4 are in NOTES.md): <line>
+- Hook chosen (pattern: <contradiction | weird action | impossible number | named wrong assumption | direct dare | status flip>): <line>
+- Hook 3-second test (what a stranger says the video will answer): <their answer, and pass or redraft>
+- Hook rejects: the other 7 are in NOTES.md with their scores.
 - Cold-read verdict (3 s / 15 s / dead weight): <summary and what was rewritten>
 
 ## Voiceover (final text)

@@ -1,9 +1,18 @@
 # Review checklist (score each out of 10; fix anything below 8)
 
+## Hook (judge this first, and alone)
+Read only the first sentence, with no title and no context.
+- **Does a stranger know what question this video answers?** If not, nothing below matters: redraft the hook.
+- Is it one sentence, under about 14 spoken words, true, and not a spoiler?
+- Is it specific to this story, rather than a line that could open any video?
+- Does it land on its strongest word instead of trailing off?
+- Fails outright on: needing a second sentence, announcing a topic, two or more names, "Did you know" or other throat-clearing.
+- **In the render:** the first 3 seconds show one clear picture that matches the hook line, with no logo card, no slow push-in on nothing, and no caption covering the face.
+
 ## Script (before the voiceover)
-- **Story spine complete:** a one-sentence logline with a want and an obstacle, one open question answered at the end, beats linked by BUT/THEREFORE, a reversal near 70 %, at most 4 names, and a closing line that echoes the first. Not a list of facts.
+- **Story shape named** (A character story or B question story) and the spine matches it.
+- **Story spine complete:** a one-sentence logline (Shape A: a want and an obstacle; Shape B: an assumption and the fact that kills it), one open question answered at the end, beats linked by BUT/THEREFORE, a reversal near 70 %, at most 4 names, and a closing line that echoes the first. Not a list of facts.
 - **Bored-viewer test:** would you swipe at 3 s? at 15 s? Is there something new to wait for every 8-10 s? Which line is dead weight?
-- Hook names the weird action in the first sentence, no context needed.
 - Six beats present, in order; the clue is shown before the payoff.
 - 120-150 spoken words, 35-60 s; numbers spelled as spoken.
 - A gag every 4-6 s, at least three kinds; at most 2 dialogue beats, each 8 words or fewer.
