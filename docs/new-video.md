@@ -49,7 +49,7 @@ Goal: the topic with the best STORY, not the most trending one. Read `references
 7. Self-check the script against `templates/review_checklist.md` (script section). Fix and continue. Do not wait for approval.
 
 ## Phase 2b: Publish research (title, description, hashtags, tags)
-Goal: a `videos/<slug>/publish.md` that gives the video its best chance to be found and watched. Base it on research done now with WebSearch/WebFetch, not on memory: rules and trends change. Use `templates/publish_template.md` and save every source link in its "Research notes".
+Goal: a `videos/<slug>/publish.txt` that gives the video its best chance to be found and watched. Base it on research done now with WebSearch/WebFetch, not on memory: rules and trends change. Use `templates/publish_template.txt` and save every source link in its "Research notes". **It is a plain text file: no Markdown.** No `#` headings, no `**bold**`, no backticks, no tables. The user copies straight out of it, so anything they paste must be exactly what YouTube should receive.
 1. **Platform rules (current year).** Search YouTube's own help pages first (then reputable creator-tool blogs) for: Shorts title length and truncation, how many hashtags count and where they show, description limits, tags and how much they matter, categories, and the disclosure questions asked at upload (made for kids, altered or synthetic content). Write down what the sources say, with links. Do not state a rule you did not find.
 2. **Competitor scan.** Search for 6-10 successful Shorts and videos on similar story or history fact topics, and on this topic itself. Note for each: title wording and length, the hook pattern, hashtags and tags if visible, and any view counts you actually see. Look for patterns (curiosity gap, "Why / How" openers, numbers, a character label) and for the gap: what nobody has titled yet. Never copy a title.
 3. **Keywords.** Search the topic's natural phrases and look at autocomplete, "people also ask" and related searches. Pick 1 primary keyword and 5-8 secondary ones that people really type, in words a viewer would use.
@@ -65,7 +65,7 @@ Goal: a `videos/<slug>/publish.md` that gives the video its best chance to be fo
      - Never a sentence, never a line lifted from the script, never a caption from the video.
      - No spoiler of the payoff, and nothing the video does not deliver.
      - Name the thing that makes someone stop: the absurd object, the impossible number, the question. "A USED UNIFORM", "1 BIRD, 0 WINS", "WHY THE HOLES?"
-     Write the chosen words, two rejected options, and the `--focus` / `--zoom` values that worked into `publish.md`. Phase 6 builds it.
+     Write the chosen words, two rejected options, and the `--focus` / `--zoom` values that worked into `publish.txt`. Phase 6 builds it.
    - **Posting:** best day and time for the target audience if the research found a source, otherwise say "no reliable source found" and give no time.
 5. Be honest: if the research is thin, say so in the file. Do not invent statistics, view counts or "viral scores". Keep real people's names out of titles if a claim is disputed.
 6. If the story or title changes later (Update mode), redo only the parts of this research that the change affects.
@@ -129,8 +129,8 @@ Follow `docs/review.md` (up to 2 rounds), then continue.
 
    **Then judge it at the right size.** Open `thumbnail_small.png`. That is roughly how big it is on a phone. If the words are not instantly readable and the character not instantly recognisable there, fix it: fewer words, a bigger `--hero`, a simpler background. Do not skip this; a cover admired at full size and unreadable at thumbnail size has failed. `--guides` marks the strips YouTube covers with its own title and channel name.
 
-3. **Finish `publish.md`:** fill in the real length, file names and posting checklist; make sure the title and description match what the finished video actually says.
-4. **Tidy:** the video folder holds only `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch stays in `work/<slug>/`. Append the finished topic to `videos/_ideas.md` with the date and slug.
+3. **Finish `publish.txt`:** fill in the real length, file names and posting checklist; make sure the title and description match what the finished video actually says.
+4. **Tidy:** the video folder holds only `<slug>.mp4`, `thumbnail.jpg`, `publish.txt`, `source/` and `versions/`. Scratch stays in `work/<slug>/`. Append the finished topic to `videos/_ideas.md` with the date and slug.
 5. Reply with: the title (chosen headline), the length, the folder path `videos/<slug>/`, the three things the user should know (choices made, anything uncertain or below 8), and one next step. Send the MP4 itself if a way to send files is available.
 6. Do not recap the process step by step.
 

@@ -1,0 +1,94 @@
+PUBLISH: <chosen title>
+
+Video: <slug>.mp4 (<N> s, 9:16)
+Thumbnail: thumbnail.jpg (2160x3840, built)
+Date: <YYYY-MM-DD>
+
+
+====================================================================
+TITLE
+====================================================================
+<title>
+
+Characters: <N>
+Why: <keyword near the front, curiosity gap, no spoiler>
+Also considered: <title 2> / <title 3>
+
+
+====================================================================
+DESCRIPTION   (copy everything between the lines)
+====================================================================
+<line 1: hook with the primary keyword>
+<line 2: the question or twist, no spoiler>
+
+<2-3 plain sentences about the story>
+
+Sources: <fact> (<link>) | <fact> (<link>)
+
+<subscribe line>
+
+#<tag1> #<tag2> #<tag3> #Shorts
+====================================================================
+
+
+====================================================================
+TAGS   (paste into the YouTube tags field)
+====================================================================
+<specific>, <specific>, <specific>, <broad>, <broad>
+
+Characters: <N> of the limit found
+
+
+====================================================================
+HASHTAGS
+====================================================================
+#<tag1> #<tag2> #<tag3> #Shorts
+
+Why each: <one line>
+
+
+====================================================================
+UPLOAD SETTINGS
+====================================================================
+Category ................... <answer>
+Made for kids .............. <answer>   <why / source>
+Altered or synthetic ....... <answer>   <why / source>
+Visibility / schedule ...... <answer>
+
+
+====================================================================
+PINNED COMMENT
+====================================================================
+<a question that starts an argument about the ending>
+
+
+====================================================================
+THUMBNAIL   (designed, not a frame with text)
+====================================================================
+Source ........ <frame at 0:00.0 | separate render, cutout.png>
+                why: <one character, clear face, no caption on screen>
+Background .... <burst | grid | split | blur>   why: <fits the story>
+Kicker ........ <YEAR OR LABEL>
+Line one ...... <LINE ONE>
+Line two ...... <LINE TWO>
+                why: <what stops the scroll, how it differs from the title>
+Rejected ...... <option 2> / <option 3>
+Checked small . <yes - words readable, character recognisable>
+
+Build command:
+python3 tools/make_thumbnail.py --video <slug>.mp4 --time <s> --kicker "<K>" --text "<A|B>" --bg <bg> --hero <h> --out thumbnail.jpg
+
+
+====================================================================
+POSTING TIME
+====================================================================
+<day and time with source, or "no reliable source found">
+
+
+====================================================================
+RESEARCH NOTES
+====================================================================
+Platform rules found: <rule> (<link>)
+Competitor scan: <title pattern> | <hashtags seen> | <views if visible> (<link>)
+Keywords: primary <kw>; secondary <kw, kw, kw>; where they came from
+Gaps and weak spots in this research: <honest list>

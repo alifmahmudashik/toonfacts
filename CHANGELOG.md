@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.10 - the publish file is plain text
+- `publish.md` is now `publish.txt`. It exists to be copied out of, and reading it as raw Markdown, or rendering it just to copy a line, was friction for no gain.
+- `templates/publish_template.txt` replaces the Markdown template and is written as plain text throughout: capitalised headings with rule lines, aligned label columns instead of tables, and the description marked off by a bar at each end so the copy block is obvious. No `#`, no `**`, no backticks, no pipes.
+- Phase 2b says it outright: the file is plain text, and whatever the user pastes must be exactly what YouTube should receive.
+- Preflight gains a one-time rename: any existing `videos/<slug>/publish.md` is copied to `publish.txt` with the Markdown stripped, and the user is told which old files they can delete. Nothing is ever deleted by the skill.
+- The legacy `video-ideas/` migration accepts either name.
+
 ## v3.9 - the thumbnail is a design, not a frame with a word on it
 - v3.8 still started from a video frame and wrote text over it, so covers stayed flat: the character small and lost in its own set, no focal point, nothing that stops a scroll.
 - **The cover is now built in three layers.** A made background, the character cut out and placed large over it, and stacked text above. `tools/make_thumbnail.py` does all three.
@@ -8,7 +15,7 @@
 - Filling holes in that cutout needed a rule of its own: a face is an enclosed hole and must be filled, while the gap between two legs is also enclosed but opens at the feet, and filling it drags the floor in. Holes whose bottom edge sits on the bottom of the character are left alone.
 - **The cover no longer has to be a moment from the video.** When no frame cuts cleanly, render or pose the character on its own over a plain background and pass `--cutout`. Phase 6 now says so outright.
 - **Text is stacked, not one flat line:** lines split by `|`, the longest set biggest in the accent colour, the rest white, plus an optional `--kicker` above (a year, a place, "TRUE STORY"). 2-4 words a line, 6 at most, and still never a repeat of the title.
-- Checklist and `publish.md` updated to match: background style, kicker, lines, rejected options and the build command are all recorded, and the small preview is still what the cover is judged at.
+- Checklist and `publish.txt` updated to match: background style, kicker, lines, rejected options and the build command are all recorded, and the small preview is still what the cover is judged at.
 
 ## v3.8 - thumbnails are built, not grabbed
 - A raw frame is not a thumbnail. The old Phase 6 ran one `ffmpeg -ss` and shipped whatever came out, so covers arrived with the video's own caption burnt into them (a meaningless half-sentence out of context), the character small, and half the picture empty floor.
@@ -17,7 +24,7 @@
 - **Cover text is now required, not optional**, and Phase 2b decides it with the rest of the publish research: 2-4 words, upper case, never a sentence or a line from the script, no spoiler, and it must not repeat the title. The title and the cover are the only two pieces of text a viewer gets, so they are not allowed to say the same thing.
 - Phase 6 picks the frame on stated rules (one character, face large, prop visible, no caption on screen) and tunes the crop until the face fills the upper half.
 - Nothing important goes in the bottom 18 %, where YouTube lays the title and channel name over the cover.
-- New thumbnail block in `templates/review_checklist.md`; `publish.md` records the frame time, the chosen and rejected cover text, and the exact build command. Update mode gains a thumbnail-only change class that needs no render and no new audio.
+- New thumbnail block in `templates/review_checklist.md`; `publish.txt` records the frame time, the chosen and rejected cover text, and the exact build command. Update mode gains a thumbnail-only change class that needs no render and no new audio.
 
 ## v3.7 - a narrator who does not laugh
 - **Laughter is banned outright.** The old rule allowed one `[laughs]` or `[chuckles]` per video; takes still came back laughing throughout, because the model renders a laugh tag generously and keeps the amusement running into the lines after it. The budget is now zero, "haha" in the text included.
@@ -49,9 +56,9 @@
 - `videos/_ideas.md` now records lane, timely/evergreen, score and evidence. `NOTES.md` records why the topic was chosen. No invented popularity numbers.
 
 ## v3.3: tidy folders and researched publish file
-- New layout: `videos/<slug>/` holds the final `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch (stills, sheets, test renders) goes to `work/<slug>/`. `video-ideas/` and `out/` are gone; Preflight step 6 migrates old projects by moving files, never deleting.
-- New Phase 2b "Publish research" in `docs/new-video.md`: current YouTube rules, a competitor scan, keyword research, then title (3 options), description, hashtags, tags, category, upload questions, pinned comment, thumbnail frame and posting time, all with sources. New `templates/publish_template.md`.
-- Phase 6 now extracts `thumbnail.jpg` and finalises `publish.md`; Update mode keeps old renders in `versions/` and refreshes the publish research when the story changes.
+- New layout: `videos/<slug>/` holds the final `<slug>.mp4`, `thumbnail.jpg`, `publish.txt`, `source/` and `versions/`. Scratch (stills, sheets, test renders) goes to `work/<slug>/`. `video-ideas/` and `out/` are gone; Preflight step 6 migrates old projects by moving files, never deleting.
+- New Phase 2b "Publish research" in `docs/new-video.md`: current YouTube rules, a competitor scan, keyword research, then title (3 options), description, hashtags, tags, category, upload questions, pinned comment, thumbnail frame and posting time, all with sources. New `templates/publish_template.txt`.
+- Phase 6 now extracts `thumbnail.jpg` and finalises `publish.txt`; Update mode keeps old renders in `versions/` and refreshes the publish research when the story changes.
 - README: new folder layout and an updated "Update an existing project" command that migrates the old folders.
 
 ## v3.2: no downloaded 3D models

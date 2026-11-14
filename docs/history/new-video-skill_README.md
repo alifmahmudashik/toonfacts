@@ -35,7 +35,7 @@ Every run starts by checking the cartoon skill (installs or upgrades it if it is
 video-ideas/
   _ideas.md              topics already used
   <slug>/
-    script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  publish.md
+    script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  publish.txt
 out/<slug>.mp4
 ```
 

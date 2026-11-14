@@ -21,11 +21,11 @@ If the request is unclear, choose New when no video is named and Update when one
 ## Operating rules (all modes)
 - **The hook is a gate, not a flourish.** No script is written until a first line passes the hook gate in `docs/new-video.md` Phase 2, and no video is delivered until the hook block at the top of `templates/review_checklist.md` passes. A weak first line is a reason to redraft, never something to patch around later.
 - **Do not ask questions.** Make reasonable choices, write them in the video's `NOTES.md`, keep going. Stop only when the voiceover cannot be created (see `docs/new-video.md` Phase 3), a needed tool is missing, or a decision cannot be undone.
-- **One folder per video, everything inside it:** `videos/<slug>/` (slug = title as lower-case words joined by hyphens). Final MP4 and `publish.md` at the top, working files in `source/`, old renders in `versions/`. Scratch (stills, contact sheets, test renders) goes only in `work/<slug>/`. Never leave work only in the conversation.
+- **One folder per video, everything inside it:** `videos/<slug>/` (slug = title as lower-case words joined by hyphens). Final MP4 and `publish.txt` at the top, working files in `source/`, old renders in `versions/`. Scratch (stills, contact sheets, test renders) goes only in `work/<slug>/`. Never leave work only in the conversation.
 - **Spend ElevenLabs credits once per voiceover** (one take). Regenerate only when the spoken words change, the audio is unusable, or the take fails the performance check in `docs/new-video.md` Phase 3 step 4 (laughter or over-acting) - then once more, with the tags cut down.
 - **Natural beats expressive.** The narrator never laughs: no `[laughs]` or `[chuckles]` anywhere, at most 3 tags in a whole script, and no exclamation marks in the voiceover text. The pictures carry the comedy; a narrator laughing at their own joke is the clearest sign of an AI take.
 - **Never print or save API keys.** The ElevenLabs MCP is added by the user in Claude Code; use it as connected.
-- **Never publish or upload** a video. Delivery is the final MP4, its thumbnail and a researched `publish.md` (title, description, hashtags, tags).
+- **Never publish or upload** a video. Delivery is the final MP4, its thumbnail and a researched `publish.txt` (title, description, hashtags, tags).
 - Final reply: a few lines (what was made or changed, where it is, the choices that matter, one next step). No step-by-step recap.
 
 ## Preflight (silent, every run, every mode)
@@ -34,9 +34,10 @@ If the request is unclear, choose New when no video is named and Update when one
 3. **Tools.** Check `ffmpeg`, Python 3 and `@remotion/three` (install `@remotion/three` and `three` in the project if missing). Find the ElevenLabs MCP tools (names like `text_to_speech`, `generate_speech`, `creative_generate_speech`, `list_voices`, `speech_to_text`, `transcribe`); load them with ToolSearch if deferred. If there are none, continue up to the voiceover, write `NEEDS_AUDIO.md` explaining that the ElevenLabs MCP must be connected (or the audio supplied), and stop there.
 4. **Old separate skills.** If `.claude/skills/cartoon-3d-short/` or `.claude/skills/new-video/` also exist, do not use them. Tell the user once in the final reply that they can remove those two folders, because this skill replaces both.
 5. **Legacy helper files.** Delete `video-ideas/SKILL-UPDATE.md` (first line starts "# Instructions for Claude Code") and `video-ideas/README.md` (first line "# video-ideas") if present. Never delete anything else.
-6. **Migrate the old layout (once, by moving, never deleting).** If `video-ideas/` or `out/` exist from an older version:
+6. **Rename old publish files (once).** The publish file is plain text now, not Markdown, because the user copies out of it and does not want to read it rendered. For every `videos/<slug>/publish.md`, copy it to `videos/<slug>/publish.txt`, strip the Markdown as you go (drop `#`, `**`, backticks, table pipes; turn headings into capitals and keep the content identical), and tell the user in the final reply which `publish.md` files they can now delete. Never delete them yourself.
+7. **Migrate the old layout (once, by moving, never deleting).** If `video-ideas/` or `out/` exist from an older version:
    - `video-ideas/_ideas.md` becomes `videos/_ideas.md`.
-   - For each `video-ideas/<slug>/`: `publish.md` goes to `videos/<slug>/publish.md`; every other file (`script.md`, `voiceover*.mp3`, `words.json`, `NOTES.md`, `REVIEW.md`, `CHANGES.md`, `NEEDS_AUDIO.md`, review sheets) goes to `videos/<slug>/source/`.
+   - For each `video-ideas/<slug>/`: `publish.md` (or `publish.txt`) goes to `videos/<slug>/publish.txt`; every other file (`script.md`, `voiceover*.mp3`, `words.json`, `NOTES.md`, `REVIEW.md`, `CHANGES.md`, `NEEDS_AUDIO.md`, review sheets) goes to `videos/<slug>/source/`.
    - Match each final render in `out/` to its slug by file name or title (`out/<slug>.mp4`, or a name like `The_Man_Who_...`): the newest becomes `videos/<slug>/<slug>.mp4`, older ones `videos/<slug>/versions/<slug>_v1.mp4`, `_v2.mp4` by date.
    - Everything else in `out/` (stills, contact sheets, QA, test renders, per-video scratch folders) is moved to `work/legacy-out/`, and the two helper files above to `work/legacy/`. Anything you cannot match stays there too.
    - When done, list what moved where in the final reply (one short list) and tell the user the empty `video-ideas/` and `out/` folders can be deleted. Do not touch `src/`, `public/`, `scripts/`, `audio/` or `backup/`, and leave any files already in `work/` where they are.
@@ -48,7 +49,7 @@ videos/                        # everything finished or in progress, one folder 
   <slug>/
     <slug>.mp4                 # FINAL video: the file to upload
     thumbnail.jpg              # built cover, 2160x3840 (not a raw frame)
-    publish.md                 # title, description, hashtags, tags, category, pinned comment + research sources
+    publish.txt                 # title, description, hashtags, tags, category, pinned comment + research sources
     source/                    # script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  CHANGES.md
     versions/                  # earlier renders: <slug>_v1.mp4 ... (kept by Update mode)
 work/                          # scratch, safe to delete: stills, contact sheets, QA, test renders, REMOTION_TMP if no other drive

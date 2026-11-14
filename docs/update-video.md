@@ -5,7 +5,7 @@ Use for "update video <slug>", "fix the video", "change the ending of <slug>", "
 ## 1. Find the video and the request
 - `<slug>` is the folder name in `videos/`. If none is named, use the most recently changed folder that has a `<slug>.mp4`.
 - The request is plain words from the user, or "fix what REVIEW.md lists". If the request is only "update" or "apply the latest rules", the request is: bring the video up to the current rules in `docs/engine.md` ("Rules for every video"), re-run the hook gate (`docs/new-video.md` Phase 2 step 3) against the current first line, and fix everything `docs/review.md` finds.
-- Read `videos/<slug>/source/script.md`, `NOTES.md`, `REVIEW.md` and `CHANGES.md` (if present) and `publish.md`, and the current render's contact sheets (`tools/review_video.sh`) so the starting point is known.
+- Read `videos/<slug>/source/script.md`, `NOTES.md`, `REVIEW.md` and `CHANGES.md` (if present) and `publish.txt`, and the current render's contact sheets (`tools/review_video.sh`) so the starting point is known.
 
 ## 2. Classify the change (this decides what is redone)
 | Change | Redo |
@@ -14,10 +14,10 @@ Use for "update video <slug>", "fix the video", "change the ending of <slug>", "
 | Words of the script (any spoken sentence) | Script, one new voice take, new `words.json`, re-time shots, then the affected shots |
 | Weak hook (the first line fails the review checklist's hook block) | Hook gate in `docs/new-video.md` Phase 2 step 3, then the opening line of the script, one new voice take, and shot 1 if the picture no longer matches the line |
 | New or removed scenes | Shot plan, `story.ts`, affected shots; new audio only if spoken words change |
-| Title, description, hashtags | `publish.md` only: redo the research steps of `docs/new-video.md` Phase 2b that the change affects |
-| Thumbnail only (weak cover, unreadable words, caption in the frame) | `tools/make_thumbnail.py` with a new frame time, cover text or `--focus`/`--zoom`; update the Thumbnail section of `publish.md`. No render, no new audio |
+| Title, description, hashtags | `publish.txt` only: redo the research steps of `docs/new-video.md` Phase 2b that the change affects |
+| Thumbnail only (weak cover, unreadable words, caption in the frame) | `tools/make_thumbnail.py` with a new frame time, cover text or `--focus`/`--zoom`; update the Thumbnail section of `publish.txt`. No render, no new audio |
 | Music or sound effects | Audio mix only |
-State the class in `source/CHANGES.md` before starting. If the spoken words or the story change, the title, description and tags in `publish.md` are re-checked at the end.
+State the class in `source/CHANGES.md` before starting. If the spoken words or the story change, the title, description and tags in `publish.txt` are re-checked at the end.
 
 ## 3. Protect the old version
 - Copy the current `videos/<slug>/<slug>.mp4` to `videos/<slug>/versions/<slug>_v<N>.mp4` (N = the version being replaced, starting at 1). Never overwrite it.

@@ -14,7 +14,7 @@ Say "new video" (optionally "about X", "surprise me", or "continue video <slug>"
 - **Save everything in the project:** `video-ideas/<slug>/` (the slug is the title in lower-case words joined by hyphens). Never leave work only in the conversation.
 - **Spend ElevenLabs credits once.** One take per voiceover. Regenerate only if the user asks or the audio is unusable (wrong text, wrong language, clipped).
 - **Never print or save API keys.** Use the connected MCP; if only an environment key exists, use it without echoing it.
-- **Never publish or upload** the video anywhere. Delivery is the MP4 plus `publish.md` (title, description, hashtags).
+- **Never publish or upload** the video anywhere. Delivery is the MP4 plus `publish.txt` (title, description, hashtags).
 - Report at the end in a few lines: what was made, where the files are, the choices made, one next step.
 
 ## Folder layout (create it)
@@ -27,7 +27,7 @@ video-ideas/
     words.json             # word timings for captions (script spelling, speech timings)
     NOTES.md               # choices made, assumptions, anything uncertain
     REVIEW.md              # review scores and fixes per round
-    publish.md             # title, description, hashtags, pinned comment
+    publish.txt             # title, description, hashtags, pinned comment
   ../out/<slug>.mp4        # final render (in the Remotion project's out/ folder)
 ```
 
@@ -56,7 +56,7 @@ Read `references/story_format.md` for what makes a Ricks-style short work. Then:
 1. **Facts first.** Search the web for at least 2 independent sources. Write a fact list with source links in `script.md` under "Fact notes". Mark anything that sources disagree on and keep the visuals generic there. Any invented dialogue must be flagged as a comic dramatisation, never as a quote.
 2. **Write the script** with the six beats in `references/story_format.md`: hook in the first 3 s, the laugh, they all look right, the clue, the payoff, the explanation, a callback twist that starts an argument. 120-150 spoken words (about 40-55 s with pauses). Deadpan narrator. A gag every 4-6 s, at least three kinds. At most 2 dialogue beats, each a quoted line of 8 words or fewer read by the narrator. Numbers and years are written the way they are spoken, and shown as digits in captions.
 3. **Shot plan.** Fill in `.claude/skills/cartoon-3d-short/templates/SHOT_PLAN_template.md` for every shot: camera flow, three depth layers, props list and background characters, light preset, caption height, reactions and idle motion, and the ending beat. 12-16 places for 60 s, 7-10 for 40 s.
-4. Write `script.md` using `templates/script_template.md`, and `publish.md` (title pattern "Why X ...", "How X ...", "What X really meant", no spoiler; 2-3 line description; 5-8 hashtags; a debate-starting pinned comment).
+4. Write `script.md` using `templates/script_template.md`, and `publish.txt` (title pattern "Why X ...", "How X ...", "What X really meant", no spoiler; 2-3 line description; 5-8 hashtags; a debate-starting pinned comment).
 5. **Self-check the script** against `templates/review_checklist.md` (script section). Fix and continue. Do not wait for approval.
 
 ## Phase 3: Voiceover and word timings (ElevenLabs)
