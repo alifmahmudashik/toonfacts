@@ -1,6 +1,6 @@
 ---
 name: toonfacts
-description: Make animated cartoon fact shorts (story-first, hook-gated: true stories, history and interesting facts, each built on one question opened in the first three seconds) in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
+description: Make animated cartoon fact shorts (story-first, hook-gated: true stories, history and interesting facts, each built on one question opened in the first three seconds) in the Ricks Clips style (2D characters in a colourful 3D world, natural dry narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
 ---
 
 # Toonfacts: animated cartoon fact shorts, one skill
@@ -22,7 +22,8 @@ If the request is unclear, choose New when no video is named and Update when one
 - **The hook is a gate, not a flourish.** No script is written until a first line passes the hook gate in `docs/new-video.md` Phase 2, and no video is delivered until the hook block at the top of `templates/review_checklist.md` passes. A weak first line is a reason to redraft, never something to patch around later.
 - **Do not ask questions.** Make reasonable choices, write them in the video's `NOTES.md`, keep going. Stop only when the voiceover cannot be created (see `docs/new-video.md` Phase 3), a needed tool is missing, or a decision cannot be undone.
 - **One folder per video, everything inside it:** `videos/<slug>/` (slug = title as lower-case words joined by hyphens). Final MP4 and `publish.md` at the top, working files in `source/`, old renders in `versions/`. Scratch (stills, contact sheets, test renders) goes only in `work/<slug>/`. Never leave work only in the conversation.
-- **Spend ElevenLabs credits once per voiceover** (one take). Regenerate only when the spoken words change or the audio is unusable.
+- **Spend ElevenLabs credits once per voiceover** (one take). Regenerate only when the spoken words change, the audio is unusable, or the take fails the performance check in `docs/new-video.md` Phase 3 step 4 (laughter or over-acting) - then once more, with the tags cut down.
+- **Natural beats expressive.** The narrator never laughs: no `[laughs]` or `[chuckles]` anywhere, at most 3 tags in a whole script, and no exclamation marks in the voiceover text. The pictures carry the comedy; a narrator laughing at their own joke is the clearest sign of an AI take.
 - **Never print or save API keys.** The ElevenLabs MCP is added by the user in Claude Code; use it as connected.
 - **Never publish or upload** a video. Delivery is the final MP4, its thumbnail and a researched `publish.md` (title, description, hashtags, tags).
 - Final reply: a few lines (what was made or changed, where it is, the choices that matter, one next step). No step-by-step recap.
@@ -66,3 +67,4 @@ work/                          # scratch, safe to delete: stills, contact sheets
 | `templates/` | Renderer source (`bridge/`), audio synthesis, scripts, shot plan, script and review templates |
 | `docs/history/` | Archive of the two earlier repos' README, CHANGELOG and original wording. Not instructions |
 | `tools/review_video.sh` | Length, hard-cut and loudness checks plus contact sheets |
+| `tools/check_voice.py` | Checks a voiceover take: speed, pauses, loudness, and the seconds where delivery is too fast (laughter, rushing) |

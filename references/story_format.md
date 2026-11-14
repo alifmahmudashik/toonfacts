@@ -2,7 +2,7 @@
 
 ## What the channel does
 - A true story told as a funny animated short, 40-70 s, vertical, simple characters in a rich 3D world.
-- A lively, expressive narrator (excited, curious, sarcastic, amused, never laughing constantly) over absurd pictures. The characters keep deadpan faces and react to what happens.
+- A natural, dry narrator (curious, deadpan, quietly amused, and never laughing) over absurd pictures. The pictures carry the comedy; the narrator reports. The characters keep deadpan faces and react to what happens.
 - Word-by-word captions, a new subject every 2-3 s, mostly reached by camera travel instead of cuts, a sound on almost every move, music under the voice.
 
 ## Story engine (what makes people stay)

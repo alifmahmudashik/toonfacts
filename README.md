@@ -1,6 +1,6 @@
 # toonfacts
 
-One Claude Code skill for animated cartoon fact shorts in the Ricks Clips style. Every video is built on one question opened in the first three seconds, and no script is written until its first line passes a hook gate. The look: simple 2D characters in a colourful 3D world, an expressive narrator, word-by-word captions, camera that flows between subjects. Rendered with three.js inside Remotion on your own PC, with an ElevenLabs voiceover.
+One Claude Code skill for animated cartoon fact shorts in the Ricks Clips style. Every video is built on one question opened in the first three seconds, and no script is written until its first line passes a hook gate. The look: simple 2D characters in a colourful 3D world, a natural, dry narrator, word-by-word captions, camera that flows between subjects. Rendered with three.js inside Remotion on your own PC, with an ElevenLabs voiceover.
 
 Based on [mromidev/claude-animated-shorts](https://github.com/mromidev/claude-animated-shorts) (MIT).
 
@@ -88,7 +88,7 @@ Update my toonfacts setup to the latest version and make sure nothing breaks.
 3. Props are now built in code, with no downloaded models. If my project has its own copy of the bridge renderer (src/videos/bridge/ or similar), copy the new templates/bridge/props.ts into it and update its world.ts so loadKit() returns makeKit() from ./props (no GLTFLoader, no staticFile, no public/bridge/kenney files). If the project does not use the bridge template, skip this and tell me.
 4. Copy any new or changed files from .claude/skills/toonfacts/templates/scripts/ into ./scripts/, but keep my Chrome path in scripts/bridge-stills.mjs.
 5. Make sure the packages from the Requirements section are installed (npm ls, pip), and that the ElevenLabs MCP is connected.
-6. Voice: the narrator is now expressive (Jack, eleven_v4, audio tags). Existing videos and their voiceover.mp3 files are untouched; only new videos use it.
+6. Voice: the narrator is natural and dry (Jack, eleven_v4), with no laughter, at most 3 audio tags per script and no exclamation marks, and each take is checked with tools/check_voice.py before use. Existing videos and their voiceover.mp3 files are untouched; only new videos use it.
 7. Folders: videos are now organised as videos/<slug>/ (final <slug>.mp4, thumbnail.jpg, publish.md, source/, versions/) with scratch in work/. If this project still has the old video-ideas/ and out/ folders, migrate them by MOVING files (never deleting) exactly as the Preflight step 6 in .claude/skills/toonfacts/SKILL.md says, leave my existing files in work/ and everything in src/, public/, scripts/, audio/ and backup/ alone, then show me the final tree of videos/ and work/ and list anything you could not match to a video.
 8. Publish files: new videos now get a researched publish.md (title options, description, hashtags, tags, category, pinned comment). For my existing videos, offer to create one with the same research steps (docs/new-video.md Phase 2b), but do it only after I say yes.
 9. Run npx tsc --noEmit, render one test still into work/, delete the test file, and report what changed and anything I must do myself.
@@ -123,4 +123,4 @@ work/                         scratch (stills, contact sheets, test renders): sa
 Every new video gets its own folder with only what you need at the top. The publish file comes from fresh research (YouTube's own rules, similar successful Shorts, real search phrases), with links, not from guesses.
 
 ## What is inside
-`SKILL.md` (modes and rules), `docs/` (new, update, review, engine), `references/`, `templates/` (renderer source, audio, scripts, shot plan), `tools/review_video.sh`. See `CHANGELOG.md`.
+`SKILL.md` (modes and rules), `docs/` (new, update, review, engine), `references/`, `templates/` (renderer source, audio, scripts, shot plan), `tools/review_video.sh`, `tools/check_voice.py`. See `CHANGELOG.md`.

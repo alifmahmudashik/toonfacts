@@ -1,6 +1,6 @@
 # <Title, no spoilers>
 
-Format: vertical animated fact short (~<N> s), Ricks Clips style: simple 2D cartoon characters in a colourful 3D world, expressive narrator (write the voiceover text with ElevenLabs audio tags, see docs/new-video.md Phase 3).
+Format: vertical animated fact short (~<N> s), Ricks Clips style: simple 2D cartoon characters in a colourful 3D world, natural, dry narrator (write the voiceover text with ElevenLabs audio tags: at most 3 tags, no laughter, no exclamation marks - see docs/new-video.md Phase 3).
 Voice: ElevenLabs "<voice name>" (model <model>).
 Audio file: `voiceover.mp3` in this folder (final take, about <N> s). Shot times below are approximate: re-time every shot to the real word timings in `words.json`.
 

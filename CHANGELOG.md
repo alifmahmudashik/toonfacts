@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.7 - a narrator who does not laugh
+- **Laughter is banned outright.** The old rule allowed one `[laughs]` or `[chuckles]` per video; takes still came back laughing throughout, because the model renders a laugh tag generously and keeps the amusement running into the lines after it. The budget is now zero, "haha" in the text included.
+- **Tags are capped at 3 per script**, never on consecutive sentences, with the quiet ones preferred (`[curious]`, `[deadpan]`, `[short pause]`, `[whispers]`). `[excited]` and `[mischievously]` are no longer the default opener: they are what pushed the delivery into hyped-up AI territory.
+- **No exclamation marks in the voiceover text**, and one capitalised punch word per script instead of one per beat. Both read as instructions to perform.
+- The goal is stated plainly in `docs/new-video.md` Phase 3: someone telling you something across a table, not a presenter doing a bit. The pictures carry the comedy, so the narrator stays dry.
+- **New `tools/check_voice.py`**, run as Phase 3 step 4 before the take is used. Reports duration, speaking rate against the script's word count, loudness, pause count and silence share, and prints LISTEN HERE spans for every second where delivery runs faster than speech, which is where laughter and rushing show up. Exits 1 on a real problem so it can gate the pipeline.
+- **One retake is now allowed for a bad performance**, with the reason and the tag changes recorded in `NOTES.md`. The one-take rule was never meant to force a laughing take into a video.
+- Voice line added to the review checklist's audio section.
+
 ## v3.6 - hook gate, and interesting facts are back
 - **The hook is now a gate.** `docs/new-video.md` Phase 2 step 3 will not let the script be written until a first line passes: draft 8 hooks across at least 4 of 6 named patterns, strike the ones that break a rewrite rule, score the survivors, then run a 3-second test on the winner judged cold with no title. A failing hook is redrafted, never carried forward because the rest of the script is good.
 - `references/story_format.md` has a full **hook section**: what a hook must be, 6 patterns with real examples, 7 rewrite triggers, and the 3-second test.

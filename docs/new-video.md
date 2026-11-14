@@ -67,21 +67,30 @@ Goal: a `videos/<slug>/publish.md` that gives the video its best chance to be fo
 
 ## Phase 3: Voiceover and word timings (ElevenLabs)
 1. **Find the tool.** Look for ElevenLabs MCP tools (names like `text_to_speech`, `generate_speech`, `creative_generate_speech`, `list_voices`, `speech_to_text`, `transcribe`). Load them with ToolSearch if deferred.
-2. **Voice and performance.** Default voice "Jack - Social Media Creator" (voice id `EgaoTKAPI20lafqnhSqN`, young, casual, enthusiastic) if available, otherwise a young, expressive, conversational male English voice from the voice list. Model `eleven_v4` (or `eleven_v3`): it reads inline audio tags. A flat voice is the most common reason a video feels boring, so write the text WITH direction:
-   - Put a tag right before the words it colours, and change tags only where the delivery changes: `[excited]`, `[curious]`, `[mischievously]`, `[sarcastic]`, `[surprised]`, `[deadpan]`, `[sighs]`, `[gasps]`, `[short pause]`.
-   - Typical shape: open `[curious]` or `[excited]` on the hook, `[mischievously]` into the setup, `[sarcastic]` or `[deadpan]` on the absurd fact, `[gasps]` or a CAPITALISED word on the payoff, `[sighs]` or `[deadpan]` on the ending.
-   - **Laughing is rare:** at most ONE `[laughs]` or `[chuckles]` in the whole video, and only after the biggest gag. Never `[laughs harder]`. Real narrators sound amused through tone, not constant laughter.
-   - Capitalise one punch word per beat at most. Use "..." and `[short pause]` before punch words. Keep numbers and years as written.
+2. **Voice and performance.** Default voice "Jack - Social Media Creator" (voice id `EgaoTKAPI20lafqnhSqN`, young, casual) if available, otherwise a young, conversational male English voice from the voice list. Model `eleven_v4` (or `eleven_v3`): it reads inline audio tags.
+
+   **Aim for natural, not performed.** The goal is someone telling you something interesting across a table, not a presenter doing a bit. Over-acting is what makes a voice sound like AI: the model takes any invitation to perform and overshoots it. The pictures and the facts carry the comedy, so the narrator can stay dry and let them land.
+
+   - **No laughter at all. Zero.** Never `[laughs]`, `[chuckles]`, `[giggles]`, `[laughs harder]`, `[snickers]`, and never "haha" or "heh" in the text. This is not a budget of one: the model renders a laugh tag generously and then keeps the amusement in its voice for the lines after it, which is exactly what makes a take sound fake. A narrator sounds amused through timing and dryness, never through laughing at their own joke.
+   - **At most 3 tags in the whole script**, and never on two sentences in a row. Most lines carry no tag. A tag every sentence is the other reason a take sounds synthetic: real speech does not change register that often.
+   - **Prefer the quiet tags:** `[curious]`, `[deadpan]`, `[short pause]`, `[whispers]`. Use `[excited]`, `[surprised]`, `[gasps]` and `[mischievously]` sparingly and never more than once each per video. They push the model toward the hyped-up delivery this rule exists to prevent.
+   - **No exclamation marks in the voiceover text**, and at most ONE capitalised punch word in the whole script, on the payoff. Both are read as instructions to perform.
+   - Use "..." and `[short pause]` before punch words; the pause does the work an exclamation mark would have done badly. Keep numbers and years as written.
    - Tags are not spoken, so strip them for the captions and for `words.json` (the script text without tags is the caption text).
+
+   Typical shape for a 130-word script: `[curious]` on the hook, nothing through the setup, `[deadpan]` on the absurd fact, a `[short pause]` before the payoff word, nothing at the end. That is three tags, and it will sound more human than ten.
+
 3. **Generate once**, with only the final voiceover text from `script.md`, one take. Save the audio as `videos/<slug>/source/voiceover.mp3`:
    - If the tool writes files, point it at the slug folder.
    - If it returns a download link (or a flow or file URL), **download it automatically** whenever the environment allows (a direct file URL with `curl -L -o`, a signed audio URL, or the connector's own download or export tool). Check that the file is real audio with `ffprobe` and that its length is plausible.
-4. **If the audio cannot be downloaded automatically** (the link needs a signed-in browser, or the shell cannot reach the site):
+4. **Check the take before using it.** Run `python3 tools/check_voice.py videos/<slug>/source/voiceover.mp3` (add `--words <n>` with the script's spoken word count for a speed check). It reports duration, loudness, pause structure and the seconds where delivery is faster than any natural narration, which is where laughter and rushed performance show up. Open those timestamps and listen before going on.
+   - **Regenerating for a bad performance is allowed, once.** The one-take rule exists to stop idle re-rolls, not to force a laughing take into a video. If the check flags burst seconds, or you hear laughter, or it sounds performed, cut the tags down (towards the three above, laughter to zero), regenerate once, and write both the reason and what you changed in `source/NOTES.md`. If the second take is still wrong, keep the better one, say so in `NOTES.md`, and continue.
+5. **If the audio cannot be downloaded automatically** (the link needs a signed-in browser, or the shell cannot reach the site):
    - Open the URL for the user in their browser (Claude in Chrome, if available) so the page is ready.
    - Finish Phase 2 and write `videos/<slug>/NEEDS_AUDIO.md` with the link and the exact steps: download the audio, save it as `voiceover.mp3` in `videos/<slug>/source/`.
    - Tell the user in two lines what to do, then stop (or, if the session can wait, check the folder for the file every minute for up to 10 minutes). When they say "continue video <slug>", resume at step 5.
-5. **Word timings:** make `words.json` (`{word, start, end}` in seconds) with the connected speech-to-text tool, or a local one (`faster-whisper`, `whisper`), or the ElevenLabs speech-to-text API if a key exists. Replace the transcribed words with the SCRIPT spelling and keep the timings. Check the audio length with `ffprobe` and compare with the script (30-70 s). If it is far off, tighten the script or the pauses and note it. Do not regenerate unless the audio is unusable.
-6. Re-time the shot plan to the real word timings.
+6. **Word timings:** make `words.json` (`{word, start, end}` in seconds) with the connected speech-to-text tool, or a local one (`faster-whisper`, `whisper`), or the ElevenLabs speech-to-text API if a key exists. Replace the transcribed words with the SCRIPT spelling and keep the timings. Check the audio length with `ffprobe` and compare with the script (30-70 s). If it is far off, tighten the script or the pauses and note it. Do not regenerate unless the audio is unusable.
+7. Re-time the shot plan to the real word timings.
 
 ## Phase 4: Build the video (`docs/engine.md`)
 1. Read `docs/engine.md` and follow it stage by stage: `story.ts` from the shot plan, continuous camera flows, word-by-word captions from `words.json`, per-place lighting, solid 3D set dressing, reaction faces and idle motion, sound design and music at the right levels. Apply every point of "Rules for every video" while building, not afterwards.

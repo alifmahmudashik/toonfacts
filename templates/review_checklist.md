@@ -30,4 +30,5 @@ Read only the first sentence, with no title and no context.
 7. **Characters alive:** blinks, sways and idle loops, nothing frozen for more than about 0.5 s; reaction faces land 0-3 frames before their words.
 8. **Ending:** a held payoff or laugh (8-12 frames after the last word); any named destination or sign fully readable.
 9. **Audio:** loudness -16 to -13 LUFS, voice clearly above music, a sound on almost every move.
+   - **Narration sounds like a person, not a performance:** no laughter anywhere, no line read with more energy than the fact deserves, pauses that breathe. Run `tools/check_voice.py` on the take and listen to every span it flags.
 10. **Story:** the gags land, the clue is visible, the visuals match what the voice says.
