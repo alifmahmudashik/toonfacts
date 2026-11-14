@@ -5,16 +5,18 @@
 - A lively, expressive narrator (excited, curious, sarcastic, amused, never laughing constantly) over absurd pictures. The characters keep deadpan faces and react to what happens.
 - Word-by-word captions, a new subject every 2-3 s, mostly reached by camera travel instead of cuts, a sound on almost every move, music under the voice.
 
-## Lanes (pick by research; rotate)
-| Lane | What it is | Example shapes |
-|---|---|---|
-| A. Story | A true historical con, heist, mistake or stunt | "In 1925, one man sold the Eiffel Tower. Twice." |
-| B. Loophole | Someone read the rules and found a gap, usually modern | "He bought thousands of puddings to win a free prize" (check it is true first) |
-| C. Why can't | A simple question whose answer has a clean physical or logical reason | "Why time travel to the past breaks the rules" |
-| D. Weird modern | Something odd from the news or everyday life this month | Product, law, record or glitch with a visible absurd moment |
-| E. How it really works | An everyday thing explained through one funny wrong assumption | "Why the first person to try X was wrong" |
+## Story engine (what makes people stay)
+A short is watched to the end only if the viewer needs an answer. Build every video on this:
+- **One protagonist with a want** (a person, an animal, even a stubborn object) and an **obstacle**. A list of facts is not a story. Weak: "the English say X, the Dutch say Y, the Portuguese say Z". Strong: one character chasing one goal while it keeps going wrong.
+- **One open question**, asked in the first 3 s and answered only at the end. Smaller questions open every 8-10 s so there is always a reason to wait for the next beat.
+- **But / therefore, never "and then".** Each beat is caused by the one before and changes something: the stakes rise, someone is proven wrong, the answer gets worse. If a beat only adds a fact, cut it or fold it into the beat before.
+- **A reversal at about 70 %** that the viewer did not expect but, looking back, was set up by the clue.
+- **Few names.** At most 4 named people, places or countries. More is trivia and the viewer stops following.
+- **The ending pays off the question and echoes the first line** with a new meaning (this also makes people replay and comment).
+- **Specific beats generic.** The exact number, the odd detail, the real quote, the funniest true moment. Research for these before writing.
+- **Every key beat has a picture that carries the joke** without the words. If you cannot draw it clearly, change the beat.
 
-The six beats stay the same in every lane; only the "genius" changes. In lanes B-E the hero can be a confident assumption, a rule, a company or a belief instead of a person: show it being sure, show the clue, then the payoff. Lane C and E need a visual metaphor (a character holding the idea, an object that stands for it): if no picture carries the joke, choose another topic. Modern settings (shop, office, space, street) need their own set and props: put that in the shot plan, built from the code-made props in `templates/bridge/props.ts` plus new builders.
+Typical shapes that work: the confident person proven wrong (or right) by a small detail; the cover-up that grows; the rule followed so literally it breaks; the mix-up everyone passes on to someone else, ending on who finally owns it; the ignored warning. Modern or unusual settings (shop, office, ship, street) need their own set: plan it in the shot plan and build it from the code-made props in `templates/bridge/props.ts` plus new builders.
 
 ## The six beats ("laugh at a genius")
 1. **Hook (0-3 s):** a weird action with no context, one picture. ("In 1925, one man sold the Eiffel Tower. Twice.")

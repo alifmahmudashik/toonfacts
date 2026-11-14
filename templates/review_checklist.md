@@ -1,7 +1,8 @@
 # Review checklist (score each out of 10; fix anything below 8)
 
 ## Script (before the voiceover)
-- The topic has a stated lane and evidence of heat (or an honest "none found"); it can be drawn as funny pictures.
+- **Story spine complete:** a one-sentence logline with a want and an obstacle, one open question answered at the end, beats linked by BUT/THEREFORE, a reversal near 70 %, at most 4 names, and a closing line that echoes the first. Not a list of facts.
+- **Bored-viewer test:** would you swipe at 3 s? at 15 s? Is there something new to wait for every 8-10 s? Which line is dead weight?
 - Hook names the weird action in the first sentence, no context needed.
 - Six beats present, in order; the clue is shown before the payoff.
 - 120-150 spoken words, 35-60 s; numbers spelled as spoken.

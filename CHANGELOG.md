@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.5: story first
+- Replaced the five lanes and trend-chasing with a story engine: one protagonist with a want and an obstacle, one open question, "but / therefore" beats, a reversal near 70 %, at most 4 names, a closing line that echoes the first. List-stories ("several facts about X") are rejected.
+- Phase 1 searches for true stories with a person or animal, a want and a reversal; popularity is only a tie-breaker. New scoring: protagonist, obstacle and reversal, surprise, stakes, drawable, debatable, verifiable, safe.
+- Phase 2: deeper research (8+ searches, read sources in full), a Story spine that must pass before writing, 5 hook options, and a cold read by a separate agent (bored-viewer test) before any voice credits are spent. New "Story spine" section in `templates/script_template.md`; story checks in `templates/review_checklist.md`.
+- Shot plan: every key beat needs a picture that carries the joke; no unreadable close-ups or blank placeholder screens.
+
 ## v3.4: trend-researched ideas and five lanes
 - Phase 1 is now research first: it searches what is being watched, searched and talked about now, collects 15-20 ideas with evidence links, and scores them (new: heat, verifiable, drawable; timely or evergreen).
 - Five lanes (story, loophole, why-can't, weird modern, how-it-works) with lane rotation (never the same lane more than twice in a row) and steering words: "new video trending", "new video science", etc.

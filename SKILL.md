@@ -1,6 +1,6 @@
 ---
 name: toonfacts
-description: Make animated cartoon fact shorts (true stories, loopholes, science curiosities, trending topics) in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
+description: Make animated cartoon fact shorts (story-first: one character, a want, an obstacle, a twist) in the Ricks Clips style (2D characters in a colourful 3D world, expressive narrator, word-by-word captions) with Remotion and three.js, end to end. Modes: new video (topic, research, script, ElevenLabs voiceover, build, self-review, render), update an existing video, continue, review, ideas. Use for "new video", "new video about X", "update video <slug>", "continue video <slug>", "review video", "give me video ideas", or any request for a viral animated fact short.
 ---
 
 # Toonfacts: animated cartoon fact shorts, one skill
@@ -10,11 +10,11 @@ Say what you want in plain words. This one skill does the whole job: idea, facts
 ## Modes (pick from the user's words)
 | User says | Mode | Read |
 |---|---|---|
-| "new video", "new video about X", "new video trending", "new video science / history / loophole", "surprise me", "make the next short" | **New** | `docs/new-video.md` (a named lane or "trending" steers the idea research) |
+| "new video", "new video about X", "surprise me", "make the next short" | **New** | `docs/new-video.md` |
 | "update video <slug>", "fix the video", "change X in <slug>", "apply the latest rules" | **Update** | `docs/update-video.md` |
 | "continue video <slug>" (after a manual step such as saving the audio) | **Continue** | `docs/new-video.md`, resume at the first missing phase |
 | "review video", "check <slug>", "check this mp4" | **Review** | `docs/review.md` only |
-| "video ideas", "give me ideas" | **Ideas** | `docs/new-video.md` Phase 1 only: research what is trending, score candidates, log them in `videos/_ideas.md`, show the top 5 with lane and evidence, build nothing |
+| "video ideas", "give me ideas" | **Ideas** | `docs/new-video.md` Phase 1 only: research true stories, score them on story strength, log them in `videos/_ideas.md`, show the top 5 with a one-line story and a source, build nothing |
 | "update the skill" | **Upgrade** | Preflight step 2 only, then report the version change |
 If the request is unclear, choose New when no video is named and Update when one is. How the video is built and how it must look is in `docs/engine.md`; both New and Update use it.
 
