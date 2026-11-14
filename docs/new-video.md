@@ -107,17 +107,28 @@ Follow `docs/review.md` (up to 2 rounds), then continue.
 
 ## Phase 6: Deliver
 1. **Final video:** copy the approved render to `videos/<slug>/<slug>.mp4`. This is the only file the user needs to upload.
-2. **Thumbnail: build one, never just grab a frame.** A raw frame is not a thumbnail. It arrives with the video's own caption burnt into it (a meaningless half-sentence out of context), the subject small, and half the picture empty floor or wall. Make it with the tool:
+2. **Thumbnail: design one.** A frame with a word on it is not a thumbnail. The cover is its own picture, built in three layers, and it may show things the video never shows: the character can be posed, re-rendered or drawn on its own for the cover.
    ```
    python3 tools/make_thumbnail.py --video videos/<slug>/<slug>.mp4 --time <s> \
-       --text "<2-4 WORDS>" --out videos/<slug>/thumbnail.jpg --focus 0.35 --zoom 1.4
+       --kicker "<YEAR OR LABEL>" --text "<LINE ONE|LINE TWO>" \
+       --bg burst --accent yellow --hero 0.60 --out videos/<slug>/thumbnail.jpg
    ```
-   It crops to the subject, lifts it off the background, and sets the words in the channel's style at 2160 x 3840, which is what YouTube recommends for a Shorts thumbnail (9:16, JPG or PNG, minimum 640 px tall). It also writes `thumbnail_small.png`.
-   - **Pick the frame first:** one character, face large and clearly reacting, the prop that matters visible, nothing blurred mid-move, and **no caption on screen** - pick a frame between spoken words if need be.
-   - **Tune `--focus` and `--zoom`** until the face fills the upper half and the empty floor is gone. `--focus` is where the face sits vertically in the source (0 top, 1 bottom); `--zoom` 1.4-1.6 is usually right for a wide shot.
-   - **Open `thumbnail_small.png` and look at it.** That is roughly the size it appears at on a phone. If the words are not instantly readable there, use fewer and bigger ones. This check is the whole point; do not skip it.
-   - Keep text out of the bottom: YouTube lays the title and channel name over it. The tool already keeps clear of it, so do not force `--pos bottom` without a reason.
-   - Use `--band` when the frame behind the words is busy or pale and the outline alone is not enough.
+   It writes 2160 x 3840, which is what YouTube recommends for a Shorts custom thumbnail (9:16, JPG or PNG, minimum 640 px tall), plus `thumbnail_small.png`.
+
+   **Layer 1, the background: made, never the video's own set.** Pick with `--bg`: `burst` (radial rays behind the character), `grid` (perspective grid running to a glowing horizon), `split` (bold diagonal colour block), `blur` (the frame itself, darkened and thrown out of focus) as the last resort. It must be darker and simpler than the character so the character pops.
+
+   **Layer 2, the character: cut out and big.** The tool cuts it from the frame by reading this channel's style, flat saturated fills inside thick black outlines against a desaturated set, then adds a rim light and a drop shadow so it lifts off the background. It should stand in the lower half and fill about 55-65 % of the height (`--hero`), with the face clearly visible and reacting.
+   - **Pick a frame where the cutout can work:** one character, facing the camera, a clear expression, nothing crossing in front of it, and **no caption on screen** (a caption sits on the body and ends up in the cutout). Pick a frame between spoken words.
+   - The tool prints what share of the frame the cutout covered. Under about 2 % means it failed.
+   - **If no frame works, make the picture instead.** Render the character on its own over a plain background, or pose it for the cover, save a PNG with a transparent background and pass `--cutout <file>`. The cover does not have to be a moment from the video. This is the better route whenever the best frame is crowded or the character is small in every shot.
+
+   **Layer 3, the text: stacked, not one flat line.** `--text` takes lines split by `|`. The longest line is set biggest in the accent colour, the others smaller in white, and `--kicker` puts a small line above it (a year, a place, a label: "1906", "WORLD WAR", "TRUE STORY").
+   - 2-4 words a line, 6 words in total at most. Two lines beats three.
+   - It must **not repeat the title**. Title and cover are the only two pieces of text a viewer gets; one asks, the other names the absurd thing.
+   - No spoiler, nothing the video does not deliver, never a sentence lifted from the script.
+
+   **Then judge it at the right size.** Open `thumbnail_small.png`. That is roughly how big it is on a phone. If the words are not instantly readable and the character not instantly recognisable there, fix it: fewer words, a bigger `--hero`, a simpler background. Do not skip this; a cover admired at full size and unreadable at thumbnail size has failed. `--guides` marks the strips YouTube covers with its own title and channel name.
+
 3. **Finish `publish.md`:** fill in the real length, file names and posting checklist; make sure the title and description match what the finished video actually says.
 4. **Tidy:** the video folder holds only `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch stays in `work/<slug>/`. Append the finished topic to `videos/_ideas.md` with the date and slug.
 5. Reply with: the title (chosen headline), the length, the folder path `videos/<slug>/`, the three things the user should know (choices made, anything uncertain or below 8), and one next step. Send the MP4 itself if a way to send files is available.

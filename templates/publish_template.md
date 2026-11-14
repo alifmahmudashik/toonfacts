@@ -38,12 +38,14 @@ Sources: <fact> (<link>) | <fact> (<link>)
 ## Pinned comment
 <a question that starts an argument about the ending>
 
-## Thumbnail
-- Frame time: <0:00.0> - why this frame: <face, prop, no caption on screen>
-- Cover text (chosen): **<2-4 WORDS>** - why: <what makes someone stop, and how it differs from the title>
-- Rejected: <option 2>, <option 3>
-- Build: `python3 tools/make_thumbnail.py --video <slug>.mp4 --time <s> --text "<WORDS>" --out thumbnail.jpg --focus <f> --zoom <z>`
-- Checked at small size in `thumbnail_small.png`: <yes, words readable>
+## Thumbnail (designed, not a frame with text)
+- Source: <frame at 0:00.0 | separate render, cutout.png> - why: <one character, clear face, no caption on screen>
+- Background: <burst | grid | split | blur> - why it suits the story
+- Kicker: **<YEAR OR LABEL>**
+- Text lines: **<LINE ONE>** / **<LINE TWO>** - why: <what stops the scroll, and how it differs from the title>
+- Rejected text: <option 2>, <option 3>
+- Build: `python3 tools/make_thumbnail.py --video <slug>.mp4 --time <s> --kicker "<K>" --text "<A|B>" --bg <bg> --hero <h> --out thumbnail.jpg`
+- Checked in `thumbnail_small.png`: <yes - words readable, character recognisable at that size>
 
 ## Posting time
 <day and time with source, or "no reliable source found">

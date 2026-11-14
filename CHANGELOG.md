@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.9 - the thumbnail is a design, not a frame with a word on it
+- v3.8 still started from a video frame and wrote text over it, so covers stayed flat: the character small and lost in its own set, no focal point, nothing that stops a scroll.
+- **The cover is now built in three layers.** A made background, the character cut out and placed large over it, and stacked text above. `tools/make_thumbnail.py` does all three.
+- **Backgrounds are made, not taken from the video:** `--bg burst` (radial rays behind the character), `grid` (perspective grid to a glowing horizon), `split` (diagonal colour block), `blur` (the frame darkened and defocused) as a last resort.
+- **The character is cut out of the frame.** The cutout reads this channel's art style - flat saturated fills inside thick black outlines, against a desaturated set - then gets a rim light and a drop shadow so it lifts off the background. It fills 55-65 % of the height with `--hero`.
+- Filling holes in that cutout needed a rule of its own: a face is an enclosed hole and must be filled, while the gap between two legs is also enclosed but opens at the feet, and filling it drags the floor in. Holes whose bottom edge sits on the bottom of the character are left alone.
+- **The cover no longer has to be a moment from the video.** When no frame cuts cleanly, render or pose the character on its own over a plain background and pass `--cutout`. Phase 6 now says so outright.
+- **Text is stacked, not one flat line:** lines split by `|`, the longest set biggest in the accent colour, the rest white, plus an optional `--kicker` above (a year, a place, "TRUE STORY"). 2-4 words a line, 6 at most, and still never a repeat of the title.
+- Checklist and `publish.md` updated to match: background style, kicker, lines, rejected options and the build command are all recorded, and the small preview is still what the cover is judged at.
+
 ## v3.8 - thumbnails are built, not grabbed
 - A raw frame is not a thumbnail. The old Phase 6 ran one `ffmpeg -ss` and shipped whatever came out, so covers arrived with the video's own caption burnt into them (a meaningless half-sentence out of context), the character small, and half the picture empty floor.
 - **New `tools/make_thumbnail.py`.** Takes a frame (or a video plus a time) and 2-4 words, crops to the subject with `--focus` and `--zoom`, lifts it off the background with a saturation, contrast and vignette pass, and sets the words in the channel's style: white face, heavy black outline, blue 3D side. Writes 2160 x 3840, which is what YouTube recommends for a Shorts custom thumbnail (9:16, JPG or PNG, minimum 640 px tall), and keeps the file under 2 MB.

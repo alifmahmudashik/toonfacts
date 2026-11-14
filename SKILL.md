@@ -67,5 +67,5 @@ work/                          # scratch, safe to delete: stills, contact sheets
 | `templates/` | Renderer source (`bridge/`), audio synthesis, scripts, shot plan, script and review templates |
 | `docs/history/` | Archive of the two earlier repos' README, CHANGELOG and original wording. Not instructions |
 | `tools/review_video.sh` | Length, hard-cut and loudness checks plus contact sheets |
-| `tools/make_thumbnail.py` | Builds a designed 2160x3840 Shorts thumbnail from a frame plus 2-4 words |
+| `tools/make_thumbnail.py` | Designs a 2160x3840 Shorts thumbnail: cuts the character out, puts it on a made background, stacks the text |
 | `tools/check_voice.py` | Checks a voiceover take: speed, pauses, loudness, and the seconds where delivery is too fast (laughter, rushing) |
