@@ -1,6 +1,6 @@
 # Publish: <chosen title>
 
-Video: `<slug>.mp4` (<N> s, 9:16)   Thumbnail: `thumbnail.jpg` (frame at <time>)   Date: <YYYY-MM-DD>
+Video: `<slug>.mp4` (<N> s, 9:16)   Thumbnail: `thumbnail.jpg` (2160x3840, built)   Date: <YYYY-MM-DD>
 
 ## Title
 - Chosen: **<title>** (<N> characters)
@@ -39,7 +39,11 @@ Sources: <fact> (<link>) | <fact> (<link>)
 <a question that starts an argument about the ending>
 
 ## Thumbnail
-Frame time: <mm:ss>. Cover text (optional): "<2-4 words>".
+- Frame time: <0:00.0> - why this frame: <face, prop, no caption on screen>
+- Cover text (chosen): **<2-4 WORDS>** - why: <what makes someone stop, and how it differs from the title>
+- Rejected: <option 2>, <option 3>
+- Build: `python3 tools/make_thumbnail.py --video <slug>.mp4 --time <s> --text "<WORDS>" --out thumbnail.jpg --focus <f> --zoom <z>`
+- Checked at small size in `thumbnail_small.png`: <yes, words readable>
 
 ## Posting time
 <day and time with source, or "no reliable source found">

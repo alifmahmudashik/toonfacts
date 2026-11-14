@@ -15,6 +15,7 @@ Use for "update video <slug>", "fix the video", "change the ending of <slug>", "
 | Weak hook (the first line fails the review checklist's hook block) | Hook gate in `docs/new-video.md` Phase 2 step 3, then the opening line of the script, one new voice take, and shot 1 if the picture no longer matches the line |
 | New or removed scenes | Shot plan, `story.ts`, affected shots; new audio only if spoken words change |
 | Title, description, hashtags | `publish.md` only: redo the research steps of `docs/new-video.md` Phase 2b that the change affects |
+| Thumbnail only (weak cover, unreadable words, caption in the frame) | `tools/make_thumbnail.py` with a new frame time, cover text or `--focus`/`--zoom`; update the Thumbnail section of `publish.md`. No render, no new audio |
 | Music or sound effects | Audio mix only |
 State the class in `source/CHANGES.md` before starting. If the spoken words or the story change, the title, description and tags in `publish.md` are re-checked at the end.
 
@@ -25,7 +26,7 @@ State the class in `source/CHANGES.md` before starting. If the spoken words or t
 ## 4. Apply the change
 - Edit only what the change needs. Do not touch unrelated shots; the rest of the video stays exactly as it was.
 - Follow `docs/engine.md` for how things are built, and "Rules for every video" for anything you add or touch.
-- Render a 15 s test of the changed shots first, then the full video to `work/<slug>/render/<slug>_v<N+1>.mp4` and, once it passes review, copy it to `videos/<slug>/<slug>.mp4` as the current version. Refresh `thumbnail.jpg` if the picture changed.
+- Render a 15 s test of the changed shots first, then the full video to `work/<slug>/render/<slug>_v<N+1>.mp4` and, once it passes review, copy it to `videos/<slug>/<slug>.mp4` as the current version. Rebuild `thumbnail.jpg` with `tools/make_thumbnail.py` if the picture changed (never re-extract a raw frame), and check it at small size.
 
 ## 5. Review
 - Run `docs/review.md` on the full video (up to 2 rounds).

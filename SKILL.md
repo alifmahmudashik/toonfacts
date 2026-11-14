@@ -47,7 +47,7 @@ videos/                        # everything finished or in progress, one folder 
   _ideas.md                    # every topic used or rejected (read first, append last)
   <slug>/
     <slug>.mp4                 # FINAL video: the file to upload
-    thumbnail.jpg              # chosen frame for the cover
+    thumbnail.jpg              # built cover, 2160x3840 (not a raw frame)
     publish.md                 # title, description, hashtags, tags, category, pinned comment + research sources
     source/                    # script.md  voiceover.mp3  words.json  NOTES.md  REVIEW.md  CHANGES.md
     versions/                  # earlier renders: <slug>_v1.mp4 ... (kept by Update mode)
@@ -67,4 +67,5 @@ work/                          # scratch, safe to delete: stills, contact sheets
 | `templates/` | Renderer source (`bridge/`), audio synthesis, scripts, shot plan, script and review templates |
 | `docs/history/` | Archive of the two earlier repos' README, CHANGELOG and original wording. Not instructions |
 | `tools/review_video.sh` | Length, hard-cut and loudness checks plus contact sheets |
+| `tools/make_thumbnail.py` | Builds a designed 2160x3840 Shorts thumbnail from a frame plus 2-4 words |
 | `tools/check_voice.py` | Checks a voiceover take: speed, pauses, loudness, and the seconds where delivery is too fast (laughter, rushing) |

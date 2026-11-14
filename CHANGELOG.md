@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.8 - thumbnails are built, not grabbed
+- A raw frame is not a thumbnail. The old Phase 6 ran one `ffmpeg -ss` and shipped whatever came out, so covers arrived with the video's own caption burnt into them (a meaningless half-sentence out of context), the character small, and half the picture empty floor.
+- **New `tools/make_thumbnail.py`.** Takes a frame (or a video plus a time) and 2-4 words, crops to the subject with `--focus` and `--zoom`, lifts it off the background with a saturation, contrast and vignette pass, and sets the words in the channel's style: white face, heavy black outline, blue 3D side. Writes 2160 x 3840, which is what YouTube recommends for a Shorts custom thumbnail (9:16, JPG or PNG, minimum 640 px tall), and keeps the file under 2 MB.
+- It also writes `thumbnail_small.png` at a twelfth scale. **That preview is the test**: a thumbnail is judged at the size of a thumbnail, and the checklist now says to open it rather than admiring the full-size version. `--guides` draws the safe zones; `--band` puts a solid bar behind the words for a busy frame.
+- **Cover text is now required, not optional**, and Phase 2b decides it with the rest of the publish research: 2-4 words, upper case, never a sentence or a line from the script, no spoiler, and it must not repeat the title. The title and the cover are the only two pieces of text a viewer gets, so they are not allowed to say the same thing.
+- Phase 6 picks the frame on stated rules (one character, face large, prop visible, no caption on screen) and tunes the crop until the face fills the upper half.
+- Nothing important goes in the bottom 18 %, where YouTube lays the title and channel name over the cover.
+- New thumbnail block in `templates/review_checklist.md`; `publish.md` records the frame time, the chosen and rejected cover text, and the exact build command. Update mode gains a thumbnail-only change class that needs no render and no new audio.
+
 ## v3.7 - a narrator who does not laugh
 - **Laughter is banned outright.** The old rule allowed one `[laughs]` or `[chuckles]` per video; takes still came back laughing throughout, because the model renders a laugh tag generously and keeps the amusement running into the lines after it. The budget is now zero, "haha" in the text included.
 - **Tags are capped at 3 per script**, never on consecutive sentences, with the quiet ones preferred (`[curious]`, `[deadpan]`, `[short pause]`, `[whispers]`). `[excited]` and `[mischievously]` are no longer the default opener: they are what pushed the delivery into hyped-up AI territory.

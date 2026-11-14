@@ -60,7 +60,12 @@ Goal: a `videos/<slug>/publish.md` that gives the video its best chance to be fo
    - **Tags:** 8-12 keyword tags from the keyword list, specific first, broad last, within the character limit you found.
    - **Category** and the upload questions (made for kids, altered or synthetic content): the answer for each with the source or the reason.
    - **Pinned comment:** a question that starts an argument about the ending.
-   - **Thumbnail:** the frame time to use (the clearest funny moment, character face and no caption over it) and optional 2-4 word cover text. Phase 6 extracts it.
+   - **Thumbnail:** the frame time (the clearest funny moment: a character face, the prop that matters, and no caption on screen) **and the cover text, which is required, not optional.** 2-4 words, upper case. Rules for the words:
+     - They must **not repeat the title**. The title and the thumbnail are read together, so saying the same thing twice wastes the only two pieces of text a viewer gets. Title asks, thumbnail shows the absurd object, or the other way round.
+     - Never a sentence, never a line lifted from the script, never a caption from the video.
+     - No spoiler of the payoff, and nothing the video does not deliver.
+     - Name the thing that makes someone stop: the absurd object, the impossible number, the question. "A USED UNIFORM", "1 BIRD, 0 WINS", "WHY THE HOLES?"
+     Write the chosen words, two rejected options, and the `--focus` / `--zoom` values that worked into `publish.md`. Phase 6 builds it.
    - **Posting:** best day and time for the target audience if the research found a source, otherwise say "no reliable source found" and give no time.
 5. Be honest: if the research is thin, say so in the file. Do not invent statistics, view counts or "viral scores". Keep real people's names out of titles if a claim is disputed.
 6. If the story or title changes later (Update mode), redo only the parts of this research that the change affects.
@@ -102,7 +107,17 @@ Follow `docs/review.md` (up to 2 rounds), then continue.
 
 ## Phase 6: Deliver
 1. **Final video:** copy the approved render to `videos/<slug>/<slug>.mp4`. This is the only file the user needs to upload.
-2. **Thumbnail:** extract the frame chosen in `publish.md` with `ffmpeg -ss <time> -i videos/<slug>/<slug>.mp4 -frames:v 1 -q:v 2 videos/<slug>/thumbnail.jpg`, check that it shows a clear face or action and no caption over it, and pick another frame if not.
+2. **Thumbnail: build one, never just grab a frame.** A raw frame is not a thumbnail. It arrives with the video's own caption burnt into it (a meaningless half-sentence out of context), the subject small, and half the picture empty floor or wall. Make it with the tool:
+   ```
+   python3 tools/make_thumbnail.py --video videos/<slug>/<slug>.mp4 --time <s> \
+       --text "<2-4 WORDS>" --out videos/<slug>/thumbnail.jpg --focus 0.35 --zoom 1.4
+   ```
+   It crops to the subject, lifts it off the background, and sets the words in the channel's style at 2160 x 3840, which is what YouTube recommends for a Shorts thumbnail (9:16, JPG or PNG, minimum 640 px tall). It also writes `thumbnail_small.png`.
+   - **Pick the frame first:** one character, face large and clearly reacting, the prop that matters visible, nothing blurred mid-move, and **no caption on screen** - pick a frame between spoken words if need be.
+   - **Tune `--focus` and `--zoom`** until the face fills the upper half and the empty floor is gone. `--focus` is where the face sits vertically in the source (0 top, 1 bottom); `--zoom` 1.4-1.6 is usually right for a wide shot.
+   - **Open `thumbnail_small.png` and look at it.** That is roughly the size it appears at on a phone. If the words are not instantly readable there, use fewer and bigger ones. This check is the whole point; do not skip it.
+   - Keep text out of the bottom: YouTube lays the title and channel name over it. The tool already keeps clear of it, so do not force `--pos bottom` without a reason.
+   - Use `--band` when the frame behind the words is busy or pale and the outline alone is not enough.
 3. **Finish `publish.md`:** fill in the real length, file names and posting checklist; make sure the title and description match what the finished video actually says.
 4. **Tidy:** the video folder holds only `<slug>.mp4`, `thumbnail.jpg`, `publish.md`, `source/` and `versions/`. Scratch stays in `work/<slug>/`. Append the finished topic to `videos/_ideas.md` with the date and slug.
 5. Reply with: the title (chosen headline), the length, the folder path `videos/<slug>/`, the three things the user should know (choices made, anything uncertain or below 8), and one next step. Send the MP4 itself if a way to send files is available.

@@ -91,7 +91,8 @@ Update my toonfacts setup to the latest version and make sure nothing breaks.
 6. Voice: the narrator is natural and dry (Jack, eleven_v4), with no laughter, at most 3 audio tags per script and no exclamation marks, and each take is checked with tools/check_voice.py before use. Existing videos and their voiceover.mp3 files are untouched; only new videos use it.
 7. Folders: videos are now organised as videos/<slug>/ (final <slug>.mp4, thumbnail.jpg, publish.md, source/, versions/) with scratch in work/. If this project still has the old video-ideas/ and out/ folders, migrate them by MOVING files (never deleting) exactly as the Preflight step 6 in .claude/skills/toonfacts/SKILL.md says, leave my existing files in work/ and everything in src/, public/, scripts/, audio/ and backup/ alone, then show me the final tree of videos/ and work/ and list anything you could not match to a video.
 8. Publish files: new videos now get a researched publish.md (title options, description, hashtags, tags, category, pinned comment). For my existing videos, offer to create one with the same research steps (docs/new-video.md Phase 2b), but do it only after I say yes.
-9. Run npx tsc --noEmit, render one test still into work/, delete the test file, and report what changed and anything I must do myself.
+9. Thumbnails are now built, not grabbed from a frame: make sure Python has Pillow (pip install pillow) so tools/make_thumbnail.py runs, and tell me if any existing video still has a raw-frame thumbnail.
+10. Run npx tsc --noEmit, render one test still into work/, delete the test file, and report what changed and anything I must do myself.
 ```
 
 Then restart Claude Code once.
@@ -123,4 +124,4 @@ work/                         scratch (stills, contact sheets, test renders): sa
 Every new video gets its own folder with only what you need at the top. The publish file comes from fresh research (YouTube's own rules, similar successful Shorts, real search phrases), with links, not from guesses.
 
 ## What is inside
-`SKILL.md` (modes and rules), `docs/` (new, update, review, engine), `references/`, `templates/` (renderer source, audio, scripts, shot plan), `tools/review_video.sh`, `tools/check_voice.py`. See `CHANGELOG.md`.
+`SKILL.md` (modes and rules), `docs/` (new, update, review, engine), `references/`, `templates/` (renderer source, audio, scripts, shot plan), `tools/review_video.sh`, `tools/check_voice.py`, `tools/make_thumbnail.py`. See `CHANGELOG.md`.

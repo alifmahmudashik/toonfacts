@@ -20,6 +20,14 @@ Read only the first sentence, with no title and no context.
 - Facts have 2+ sources; disputed details are generic; invented lines are labelled as dramatisation.
 - Nobody real is mocked unfairly; no medical, legal or political claims.
 
+## Thumbnail (open `thumbnail_small.png`, not the full size)
+- **Readable at shelf size:** the words are legible in the small preview. If you have to squint, it fails.
+- Built, not grabbed: no caption from the video anywhere in it.
+- One subject, face large in the upper half, no large empty floor or wall.
+- 2-4 words, upper case, and **not a repeat of the title**.
+- No spoiler of the payoff; nothing promised that the video does not show.
+- 2160 x 3840, 9:16, JPG or PNG. Nothing important in the bottom 18 %, where YouTube lays the title.
+
 ## Video (after each render; look at every contact sheet)
 1. **Framing:** nothing cropped, nothing outside the safe area (6 % sides, 8 % top, 15 % bottom), heads at most 30 % of frame height.
 2. **No blank slabs:** no flat or unlit surface over 8 % of the frame; empty floor under 25 % of a wide.
