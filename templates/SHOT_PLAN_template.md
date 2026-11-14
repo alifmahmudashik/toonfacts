@@ -6,7 +6,22 @@ Fill in one row per shot BEFORE building `story.ts`. A shot that cannot fill eve
 |---|------|-------------------|-----------------------------------------------|---------------------------------------------|-----------------------------------------------|--------------|-----------------------------|---------------------------------------------------------------|------------------------------------------|
 | 1 |      |                   |                                               |                                             |                                               |              |                             |                                                               |                                          |
 
+## Physical truth, per shot (fill this in too; it becomes the `assertScene` call)
+
+A shot is a claim about the world. Write the claim down here, then make the code
+assert it. Leave a cell empty only when the shot genuinely has none of that kind.
+
+| # | Must be READ (sign, paper, label) | Who LOOKS at what (character -> target) | What is AIMED at what (gun, arm, telescope -> target) | What is HELD, in which hand | Key light direction, and what casts a shadow where |
+|---|-----------------------------------|------------------------------------------|--------------------------------------------------------|------------------------------|-----------------------------------------------------|
+| 1 |                                   |                                          |                                                        |                              |                                                     |
+
+- Anything in the READ column must be whole, inside the safe area and at least 10 % of frame height. If the shot is too tight for that, the shot is too tight.
+- Every look the narration mentions goes in the LOOKS column. If the voice says they stared at it, they face it.
+- Text printed on a prop is fitted with `fitText` / `drawFittedText`, never typed at a fixed size.
+- Held props are children of the hand and sit nearer the camera than the torso.
+
 ## Whole-video checks (all must be yes)
+- `assertScene` passes for every shot and every flow stop (safe area, read, looks, aim, held)?
 - Every shot has 3 depth layers and solid 3D props? (flat planes only for paper, posters, distant skylines)
 - 12+ props per place, 6+ in every wide, background characters in every interior and street?
 - No flat or unlit surface over 8 % of the frame, empty floor under 25 % of a wide?

@@ -72,7 +72,7 @@ User rules that apply:
    - Set `BRIDGE_ENTRY=src/sandboxes/<n>/index.tsx` to render a sandbox copy.
    - Make side-by-sides against reference frames with `python scripts/sbs_sheet.py out.jpg --ours ... --ref ...`.
    - Send them to an Opus max verifier: 1-3 images, a ≤200-word verdict.
-   - Run the framing check (`templates/bridge/framing.ts`) for every shot and make one contact sheet with a still per shot (first, middle, last frame). See 'Quality gate'.
+   - Run the stage check (`assertScene` in `templates/bridge/framing.ts`) for every shot and make one contact sheet with a still per shot (first, middle, last frame). See 'Physical truth' and 'Quality gate'.
 10. **Final render.**
     - `npx remotion render src/index.ts <Comp> work/<slug>/render/video.mp4 --codec h264 --crf 16 --scale 1.3333`
     - Mux with `-map 0:v:0 -map 1:a:0` (Remotion writes a silent audio track).
@@ -216,8 +216,80 @@ Characters do not talk with moving lips and there is no second voice. The narrat
 - **Extras that fit the same rules:** double take (face looks away, then back with `shock`), punch-in on the last word (0.6 %/f for 35 f), freeze for 6 f with a record-scratch, a bystander's face in the background reacting a beat late.
 - If real lip movement or a second voice is wanted later, add it as its own feature; the default is narrator-only.
 
+## Physical truth (the shot must mean what the voice says)
+
+A shot can pass the safe-area check and still be wrong, because that check only
+looks at the objects you hand it. These are the failures that keep reaching
+finished videos, and each one now has a check that stops the build.
+
+**Declare, then assert.** Every shot states what it claims is true and calls
+`assertScene` from `templates/bridge/framing.ts` before it renders. A shot that
+cannot pass is a shot that is wrong; fix the geometry, never lower the limit.
+
+**The copied template contains no assertions.** `templates/bridge/` ships the
+checks in `framing.ts` and not one call to them, so a freshly copied video is
+entirely unchecked until you write them. Writing them is the first build task,
+not the last, and `tools/check_scene.py` fails until every shot in `SHOTS` has
+its call. Run it before the test clip and again before the full render:
+
+```
+python3 tools/check_scene.py src/videos/<name> --selftest
+```
+
+It also fails a file that paints text with a typed font size and never calls
+`fitText`. Both failures are the ones that reached finished videos.
+
+```ts
+import {assertScene} from './framing';
+
+assertScene(7, {
+  camera,
+  items: [{name: 'thief', obj: thief, role: 'must-fit'}],
+  read:  [{name: 'final report', obj: reportPaper}],        // the viewer must read it
+  facing:[{name: 'crowd', obj: crowd, target: paintingWall}], // they look where the voice says
+  held:  [{name: 'canvas', prop: canvas, hand: thiefHand, body: thiefTorso}],
+});
+```
+
+- **Eyelines.** If the narration says someone looks at, stares at, watches or
+  turns to something, the character must actually face it: `checkFacing` allows
+  35 degrees off, which is a glance, and nothing more. A crowd facing the camera
+  while the voice says they are staring at a painting is the single most
+  noticeable kind of lie in this format.
+- **Aim.** A gun, a pointing arm, a telescope, a thrown object: `checkAim`
+  allows 6 degrees, because a barrel that is visibly off the target reads as a
+  mistake rather than a joke. Aim it with `lookAt` at the target object, never
+  by typing a rotation that looked right once.
+- **Held things are parented to the hand and sit in front of the body.** A
+  carried painting, sign or tool is a child of the hand, and it must be nearer
+  the camera than the torso, or the body draws over it and it reads as being
+  inside the character. `checkHeld` tests both the gap to the hand and the
+  depth against the body.
+- **Anything the viewer must read is listed in `read`.** It must be whole,
+  inside the safe area and at least 10 % of the frame height. A close-up tight
+  enough to crop the sign it is showing has defeated its own purpose: pull the
+  camera back. Never fix a cropped sign by shrinking its text.
+- **Text is fitted to the prop, never typed at a size that looked right.** Use
+  `fitText` or `drawFittedText` from `framing.ts` for every sign, label,
+  document and headline painted onto a prop: they measure the string and shrink
+  it until it fits the face with a margin. Typing a size is what puts "ROUNDS"
+  over the end of the board and "FINAL REPORT" past the edge of the paper. Text
+  belongs to the prop, so it wraps and shrinks with it.
+- **Contact shadows follow the object.** Anything resting on a surface gets its
+  shadow at its own base, in the direction of the key light for that place. A
+  prop lifted, carried or thrown keeps its shadow under where it now is, not
+  where it started.
+- **Zoom is decided by what must be legible,** not by how close you can get.
+  Frame the thing the beat is about, with its whole bounding box plus a margin,
+  and only then make it prettier.
+
+Self-test: `npx tsx templates/scripts/framing_selftest.ts` proves each check
+catches the failure it is for, including the eyeline, the aim, the held prop,
+the cropped sign and the overflowing text.
+
 ## Quality gate (before every full render)
-1. Framing check passes for every shot and every flow stop (`framing.ts`). Hard cuts are at most 2 per 60 s, every subject change inside one place is a flow (`checkFlow` has no warnings), and the flows cover at least 60 % of the screen time.
+0. **`python3 tools/check_scene.py src/videos/<name> --selftest` passes.** Every shot in `SHOTS` has an `assertScene` call and prop text is fitted. Until this passes the checks below are not actually running, whatever the render looks like.
+1. **Stage check passes for every shot and every flow stop** (`assertScene` in `framing.ts`): safe area, eyelines, aim, held props and everything that must be read. It throws, so a failing shot cannot reach a render. Hard cuts are at most 2 per 60 s, every subject change inside one place is a flow (`checkFlow` has no warnings), and the flows cover at least 60 % of the screen time.
 2. One contact sheet with a still per shot (first, middle, last frame), side by side with `references/frames/`.
 3. Score lighting, shadows, blur, framing, zoom, camera variety, captions, gags and 3D depth out of 10. Fix anything below 8 and re-render those stills.
    - 3D depth and set dressing: every shot has 3 depth layers, 6+ props in wides, background life in interiors and streets, and no blank surface over 8 % of the frame (see 'Set dressing and real 3D depth').

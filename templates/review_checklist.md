@@ -29,6 +29,16 @@ Read only the first sentence, with no title and no context.
 - No spoiler of the payoff; nothing promised that the video does not show.
 - 2160 x 3840, 9:16, JPG or PNG. Nothing important in the bottom 16 %, where YouTube lays the title.
 
+## Does the picture mean what the voice says (check before the polish items)
+- `tools/check_scene.py` passes: every shot has its `assertScene`, prop text is fitted.
+- **Anything the viewer must read is whole and inside the frame.** No word of a sign, paper or label crosses its own prop's edge or the frame edge. A close-up too tight for its sign is too tight.
+- **Eyelines match the narration.** If the voice says they looked at it, stared at it or turned to it, they face it. A crowd facing camera while the voice says they are staring at a painting is the most noticeable lie this format can tell.
+- **Aim matches the target.** A gun, pointing arm or telescope points at the thing, not near it.
+- **Held props sit in the hand and in front of the body**, never drawn inside or behind the character holding them.
+- **Shadows sit under the object**, in the key-light direction of that place, and move with anything carried or thrown.
+- **Nothing important is cropped by a zoom.** The thing the line is about is framed whole, with margin.
+- **Named artwork and signs are drawn**, not left as a blank coloured rectangle standing in for them.
+
 ## Video (after each render; look at every contact sheet)
 1. **Framing:** nothing cropped, nothing outside the safe area (6 % sides, 8 % top, 15 % bottom), heads at most 30 % of frame height.
 2. **No blank slabs:** no flat or unlit surface over 8 % of the frame; empty floor under 25 % of a wide.
@@ -41,3 +51,9 @@ Read only the first sentence, with no title and no context.
 9. **Audio:** loudness -16 to -13 LUFS, voice clearly above music, a sound on almost every move.
    - **Narration sounds like a person, not a performance:** no laughter anywhere, no line read with more energy than the fact deserves, pauses that breathe. Run `tools/check_voice.py` on the take and listen to every span it flags.
 10. **Story:** the gags land, the clue is visible, the visuals match what the voice says.
+11. **Physical truth** (the failures that survive every other check):
+    - Everything the voice asks you to read is whole on screen and big enough to read. No sign or document cropped by the frame, and no text running past the edge of the prop it is printed on.
+    - Everyone the narration says is looking at something is actually facing it.
+    - Anything aimed points at what it is aimed at.
+    - Carried props are in the hand and in front of the body, never drawn behind it.
+    - Shadows sit under the thing that casts them, in the direction of that place's key light.

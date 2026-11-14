@@ -19,6 +19,7 @@ Say what you want in plain words. This one skill does the whole job: idea, facts
 If the request is unclear, choose New when no video is named and Update when one is. How the video is built and how it must look is in `docs/engine.md`; both New and Update use it.
 
 ## Operating rules (all modes)
+- **A shot must mean what the voice says, and it is checked mechanically.** Every shot declares what it claims (what is read, who looks at what, what aims at what, what is held) and calls `assertScene`; every string painted on a prop goes through `fitText`. `tools/check_scene.py` blocks the render until those calls exist. Never render past a failing gate, and never fix a cropped sign by shrinking its text or widening a tolerance: fix the geometry.
 - **The hook is a gate, not a flourish.** No script is written until a first line passes the hook gate in `docs/new-video.md` Phase 2, and no video is delivered until the hook block at the top of `templates/review_checklist.md` passes. A weak first line is a reason to redraft, never something to patch around later.
 - **Do not ask questions.** Make reasonable choices, write them in the video's `NOTES.md`, keep going. Stop only when the voiceover cannot be created (see `docs/new-video.md` Phase 3), a needed tool is missing, or a decision cannot be undone.
 - **One folder per video, everything inside it:** `videos/<slug>/` (slug = title as lower-case words joined by hyphens). Final MP4 and `publish.txt` at the top, working files in `source/`, old renders in `versions/`. Scratch (stills, contact sheets, test renders) goes only in `work/<slug>/`. Never leave work only in the conversation.
@@ -69,4 +70,5 @@ work/                          # scratch, safe to delete: stills, contact sheets
 | `docs/history/` | Archive of the two earlier repos' README, CHANGELOG and original wording. Not instructions |
 | `tools/review_video.sh` | Length, hard-cut and loudness checks plus contact sheets |
 | `tools/make_thumbnail.py` | Designs a 2160x3840 Shorts thumbnail: cuts the character out, puts it on a made background, stacks the text |
+| `tools/check_scene.py` | Blocks a render whose shots never declared their physical truth, or whose prop text is not fitted |
 | `tools/check_voice.py` | Checks a voiceover take: speed, pauses, loudness, and the seconds where delivery is too fast (laughter, rushing) |

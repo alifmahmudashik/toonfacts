@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.11 - the physical-truth checks are now enforced, not just documented
+- The rules were already there. Since v3.0 `templates/bridge/framing.ts` has shipped `assertScene`, `checkFacing`, `checkAim`, `checkHeld`, `checkReadable` and `fitText`, and `docs/engine.md` named the exact failures they catch. Videos shipped with those failures anyway: "ROUNDS" hanging off the end of a board, "FINAL REPORT" past the edge of its paper, a painting drawn inside the body carrying it, a crowd facing away from the painting the narration said they were staring at.
+- The reason is now plain: **the copied template contains no assertions at all.** `templates/bridge/` has 15 shots in `SHOTS` and zero calls to its own checks, so a freshly copied video is completely unchecked, and nothing ever noticed.
+- **New `tools/check_scene.py`.** It fails when a shot in `SHOTS` has no `assertScene` call, when a file paints text with `fillText` and never calls `fitText`, or when `framing.ts` is missing from the video's folder. `--selftest` also runs the framing self-test. It exits 1, so it gates.
+- Phase 4 is reordered around it: wiring the checks is now **the first build task**, before any other shot work, and nothing renders - not even the 15 s test clip - while the gate fails. It runs again before the full render.
+- The gate is step 0 of the Quality gate in `docs/engine.md`, step 2 of the review loop, and the first line of a new "Does the picture mean what the voice says" block in the review checklist, which sits above the polish items.
+- SKILL.md states it as a standing rule: never render past a failing gate, and never fix a cropped sign by shrinking its text or widening a tolerance. Fix the geometry.
+
 ## v3.10 - the publish file is plain text
 - `publish.md` is now `publish.txt`. It exists to be copied out of, and reading it as raw Markdown, or rendering it just to copy a line, was friction for no gain.
 - `templates/publish_template.txt` replaces the Markdown template and is written as plain text throughout: capitalised headings with rule lines, aligned label columns instead of tables, and the description marked off by a bar at each end so the copy block is obvious. No `#`, no `**`, no backticks, no pipes.

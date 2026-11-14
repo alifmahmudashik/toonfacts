@@ -99,8 +99,10 @@ Goal: a `videos/<slug>/publish.txt` that gives the video its best chance to be f
 
 ## Phase 4: Build the video (`docs/engine.md`)
 1. Read `docs/engine.md` and follow it stage by stage: `story.ts` from the shot plan, continuous camera flows, word-by-word captions from `words.json`, per-place lighting, solid 3D set dressing, reaction faces and idle motion, sound design and music at the right levels. Apply every point of "Rules for every video" while building, not afterwards.
-2. Run its Quality gate and a 15 s test clip (hook plus 2-3 shots) first. Fix, then build the rest.
-3. Render at 1440x2560 (`--scale 1.3333`) into `work/<slug>/render/<slug>.mp4` (scratch). The final copy is made in Phase 6.
+2. **Wire the physical-truth checks first, before any other shot work.** The copied `templates/bridge/` starts with no assertions at all, so nothing is being checked until you write them. For every shot in `SHOTS`, fill in its row of the shot plan's "Physical truth" table and write the matching `assertScene` call (see `docs/engine.md`, 'Physical truth'): what must be read, who looks at what, what aims at what, what is held in which hand. Paint every string on a prop with `fitText` or `drawFittedText`, never a typed font size.
+3. **Gate: `python3 tools/check_scene.py src/videos/<name> --selftest`.** It fails when a shot has no `assertScene`, when text is painted at a typed size with no fitting in the file, or when `framing.ts` is missing. **Do not render anything, not even the test clip, while it is failing.** This gate exists because the rules alone were not enough: videos shipped with "ROUNDS" hanging off the end of a board, "FINAL REPORT" past the edge of the paper, a painting drawn inside the body carrying it, and a crowd facing away from the thing the narration said they were staring at. Every one of those would have thrown at build time if the calls had been written.
+4. Run the Quality gate in `docs/engine.md` and a 15 s test clip (hook plus 2-3 shots). Fix, then build the rest.
+5. Re-run `tools/check_scene.py` after the rest of the shots exist, then render at 1440x2560 (`--scale 1.3333`) into `work/<slug>/render/<slug>.mp4` (scratch). The final copy is made in Phase 6.
 
 ## Phase 5: Self-review loop
 Follow `docs/review.md` (up to 2 rounds), then continue.
