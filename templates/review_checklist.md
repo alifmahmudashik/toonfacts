@@ -29,6 +29,14 @@ Read only the first sentence, with no title and no context.
 - No spoiler of the payoff; nothing promised that the video does not show.
 - 2160 x 3840, 9:16, JPG or PNG. Nothing important in the bottom 16 %, where YouTube lays the title.
 
+## Look (measured, not judged)
+- `tools/check_look.py` passes. The reference channel's median saturation is 0.52; a render under 0.25 is washed out and fails.
+- You have opened the side-by-side sheet and compared your frame with the reference frames on it.
+- **Every place has its own light preset**, not `day` indoors. A dark ceiling or wall top, one clear warm key, a cool shade side, a vignette.
+- **Practical lights are visible in shot** where the place would have them: a lamp, a window, a candle, a screen. The reference frames almost always have one.
+- Contact shadow under every character and prop, and a shadow tail in the key-light direction.
+- Animals get the same care as people: a head big enough for an expression, eyes and mouth placed on it, whole head inside the frame.
+
 ## Does the picture mean what the voice says (check before the polish items)
 - `tools/check_scene.py` passes: every shot has its `assertScene`, prop text is fitted.
 - **Anything the viewer must read is whole and inside the frame.** No word of a sign, paper or label crosses its own prop's edge or the frame edge. A close-up too tight for its sign is too tight.

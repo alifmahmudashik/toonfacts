@@ -114,7 +114,14 @@ def main():
                          f"{', '.join(map(str, lines[:6]))}. The file does use fitText, so check "
                          "these are decoration, not text the viewer has to read.")
 
-    # 4. the checks themselves still work
+    # 4. somebody's head has to be registered, or faces get cropped
+    heads = sum(len(re.findall(r"role\s*:\s*['\"]head['\"]", strip_comments(read(p)))) for p in files)
+    if ids and not heads:
+        warns.append("No item anywhere uses role: 'head'. Nothing is checking that a face stays "
+                     "inside the frame, so a tight shot will crop it. Register the head of every "
+                     "character the shot is about, animals included.")
+
+    # 5. the checks themselves still work
     if a.selftest:
         st = os.path.join("templates", "scripts", "framing_selftest.ts")
         if os.path.exists(st) and shutil.which("npx"):

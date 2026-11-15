@@ -60,6 +60,7 @@ User rules that apply:
 6. **Characters.**
    - `toon.ts`: the Canvas2D `Pen` drawing API, 600x1000 design canvas, soles at y = 975, bean heads, stick limbs, plum variable-width outline, face library.
    - `cast.ts`: camera-facing billboards, crowds, effect cards, blinks, walk cycles. All billboards go on the `NOINK` layer.
+   - **Animals are not in the template.** `toon.ts` draws bean-headed people and nothing else: there is no chicken, cow, horse or bird in it. A story that needs one is drawing a new character from scratch with the same `Pen` API, on the same 600x1000 canvas, and it needs the same care a person gets: a head big enough to carry an expression, eyes and mouth from the face library placed on that head, the plum outline, and the soles on the ground line. Register its head as a `role: 'head'` item like any other, or the first close-up crops its face.
    - `cardshade.ts`: cards lit by the scene light, no emissive.
 7. **Post** (`Bridge.tsx` + `ink.ts` + `lensblur.ts` + `grade.ts`).
    - Composer order: ink → lens pre → lens main → bloom → NEUTRAL tone map → grade (MSAA 4).
@@ -152,7 +153,13 @@ The look is "2D characters in a real 3D world". A shot that reads as a flat back
 - **Show the world in 3D when it matters:** the hero object (a tower, ship, bridge, machine) is a full 3D model seen from a changing angle (low, high, three-quarter), not always straight on.
 - **Check:** render one still per shot and answer yes/no: 3 layers? 6+ props? any blank slab over 8 %? Fix every "no" before the full render.
 
-## Lighting for every place (the bridge only defines day and golden)
+## Lighting for every place
+`lights.ts` ships five presets: `day`, `golden`, `interior`, `night` and `lamp`.
+The last three are starting values, added because only the two outdoor ones
+existed and every hall, museum and trench was therefore lit like a field at
+noon. Tune them on real renders and keep tuning until `tools/check_look.py`
+passes; a place that needs none of the five gets its own entry.
+
 Every place needs its own light preset in `lights.ts`: a clear key direction, two-tone shading (warm lit, cool shade), cast and contact shadows, and a matching sky or ceiling. Never a flat unlit room, and never sky or clouds visible inside a room.
 - **Interior (hall, hotel, office):** a ceiling or dark wall top, one key light from a window or lamp, warm practical lights (candles, lamps) with bloom, a cool shade side, a soft vignette, floor and wall shadows from every prop, light shafts or dust from windows.
 - **Night:** moonlit blue key (about #5b7fd6), deep blue-violet shade, warm lit windows and lamps as contrast, moon disc or stars.
@@ -288,6 +295,7 @@ catches the failure it is for, including the eyeline, the aim, the held prop,
 the cropped sign and the overflowing text.
 
 ## Quality gate (before every full render)
+0. **`python3 tools/check_look.py work/<slug>/render/<slug>.mp4 --sheet work/<slug>/look.jpg` passes**, and you have opened the sheet and compared it with the reference frames beside it. The check measures saturation, luminance, shadow share and contrast against the 20 reference shorts; flat lighting fails here as a number rather than passing as an opinion.
 0. **`python3 tools/check_scene.py src/videos/<name> --selftest` passes.** Every shot in `SHOTS` has an `assertScene` call and prop text is fitted. Until this passes the checks below are not actually running, whatever the render looks like.
 1. **Stage check passes for every shot and every flow stop** (`assertScene` in `framing.ts`): safe area, eyelines, aim, held props and everything that must be read. It throws, so a failing shot cannot reach a render. Hard cuts are at most 2 per 60 s, every subject change inside one place is a flow (`checkFlow` has no warnings), and the flows cover at least 60 % of the screen time.
 2. One contact sheet with a still per shot (first, middle, last frame), side by side with `references/frames/`.
